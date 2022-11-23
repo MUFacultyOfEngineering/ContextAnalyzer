@@ -16,7 +16,7 @@ public class SynchronizeThisDeviceData {
 		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//delete all
-		String prepareDelete = "delete where {?s ?o ?p};";;
+		String prepareDelete = "delete where {?s ?o ?p};";
 		repManager.executeInsert(Tools.REPOSITORY_ID, prepareDelete);
 		
 		for (int i = 1; i <= 3; i++) {
