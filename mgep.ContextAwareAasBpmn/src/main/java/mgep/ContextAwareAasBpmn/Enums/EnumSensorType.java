@@ -1,7 +1,12 @@
 package mgep.ContextAwareAasBpmn.Enums;
 
 public enum EnumSensorType {
-	sensorTypeBatteryLevel,
-	sensorTypeGPS,
-	sensorTypeOther
+	BATTERY,
+	GPS,
+	PROXIMITY,
+	WEIGHT,
+	TEMPERATURE,
+	HUMIDITY,
+	SIZE,
+	OTHER
 }

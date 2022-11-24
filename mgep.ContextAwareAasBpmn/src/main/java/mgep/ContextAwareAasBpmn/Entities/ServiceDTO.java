@@ -19,6 +19,10 @@ public class ServiceDTO implements Serializable {
 	private List<ServiceParameterDTO> outputParameters;
 	private List<QualityParameterDTO> qualityParameters;
 	
+	public ServiceDTO() {
+		super();
+	}
+	
 	public ServiceDTO(String aasIdentifier, String serviceIdentifier, String url, String method, boolean isAsync, String name, String description) {
 		super();
 		this.aasIdentifier = aasIdentifier;

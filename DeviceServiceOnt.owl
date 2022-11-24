@@ -266,30 +266,7 @@
 
     <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorType">
         <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Sensor"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorTypeBatteryLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorTypeBatteryLevel">
-        <rdfs:subPropertyOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorType"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorTypeGPS -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorTypeGPS">
-        <rdfs:subPropertyOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorType"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorTypeOther -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorTypeOther">
-        <rdfs:subPropertyOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorType"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 

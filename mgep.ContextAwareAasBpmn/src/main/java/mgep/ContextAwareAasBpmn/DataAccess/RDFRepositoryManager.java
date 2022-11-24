@@ -327,12 +327,12 @@ public class RDFRepositoryManager {
 		
 	}
 	
-	public boolean executeInsert(String id_repository, String strInsert) {
+	public boolean executeQuery(String id_repository, String strQuery) {
 		RepositoryConnection conn = this.connectToRepository(id_repository);
 		
 		try{
 			conn.begin();
-			Update updateOperation = conn.prepareUpdate(QueryLanguage.SPARQL, strInsert);
+			Update updateOperation = conn.prepareUpdate(QueryLanguage.SPARQL, strQuery);
 			updateOperation.execute();
 			conn.commit();
 			return true;
