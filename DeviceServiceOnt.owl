@@ -21,20 +21,20 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasAasIdentifier -->
-
-    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasAasIdentifier">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
-        <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AasIdentifier"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasApiDocumentation -->
 
     <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasApiDocumentation">
         <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
-        <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#ApiDocumentation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasDevice -->
+
+    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasDevice">
+        <owl:inverseOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#isAssetOf"/>
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AssetAdmintrationShell"/>
+        <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
     </owl:ObjectProperty>
     
 
@@ -57,10 +57,12 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasQuality -->
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasParameter -->
 
-    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasQuality">
+    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasParameter">
         <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+        <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Input"/>
+        <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
         <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
     </owl:ObjectProperty>
     
@@ -76,15 +78,6 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasSensorValue -->
-
-    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasSensorValue">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Sensor"/>
-        <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#SensorValue"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasService -->
 
     <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasService">
@@ -92,6 +85,12 @@
         <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
         <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#isAssetOf -->
+
+    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#isAssetOf"/>
     
 
 
@@ -118,10 +117,28 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#deviceAasIdentifier -->
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#aasIdShort -->
 
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#deviceAasIdentifier">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AasIdentifier"/>
+    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#aasIdShort">
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AssetAdmintrationShell"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#aasIdentifier -->
+
+    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#aasIdentifier">
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AssetAdmintrationShell"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#aasName -->
+
+    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#aasName">
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AssetAdmintrationShell"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -130,7 +147,7 @@
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#deviceApiDocumentation -->
 
     <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#deviceApiDocumentation">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#ApiDocumentation"/>
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
     </owl:DatatypeProperty>
     
@@ -190,6 +207,30 @@
     
 
 
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#parameterName -->
+
+    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#parameterName">
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#parameterType -->
+
+    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#parameterType">
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#parameterValue -->
+
+    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#parameterValue">
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterCorrespondsTo -->
 
     <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterCorrespondsTo">
@@ -202,33 +243,6 @@
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterEvaluationExpression -->
 
     <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterEvaluationExpression">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterName -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterName">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterType -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterType">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterValue -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#qualityParameterValue">
         <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -274,7 +288,7 @@
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorValueDataType -->
 
     <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorValueDataType">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#SensorValue"/>
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Sensor"/>
     </owl:DatatypeProperty>
     
 
@@ -282,7 +296,7 @@
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorValueDataValue -->
 
     <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorValueDataValue">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#SensorValue"/>
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Sensor"/>
     </owl:DatatypeProperty>
     
 
@@ -290,7 +304,7 @@
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorValueUnit -->
 
     <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#sensorValueUnit">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#SensorValue"/>
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Sensor"/>
     </owl:DatatypeProperty>
     
 
@@ -352,29 +366,10 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#serviceParameterName -->
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#serviceParameter -->
 
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#serviceParameterName">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Input"/>
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#serviceParameterType -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#serviceParameterType">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Input"/>
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#serviceParameterValue -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#serviceParameterValue">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Input"/>
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#serviceParameter">
+        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter"/>
     </owl:DatatypeProperty>
     
 
@@ -398,32 +393,24 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AasIdentifier -->
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AssetAdmintrationShell -->
 
-    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AasIdentifier">
-        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
-    </owl:Class>
-    
-
-
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#ApiDocumentation -->
-
-    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#ApiDocumentation">
-        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
-    </owl:Class>
+    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AssetAdmintrationShell"/>
     
 
 
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device -->
 
-    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device">
+        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#AssetAdmintrationShell"/>
+    </owl:Class>
     
 
 
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Input -->
 
     <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Input">
-        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter"/>
     </owl:Class>
     
 
@@ -431,15 +418,21 @@
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output -->
 
     <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output">
-        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter"/>
     </owl:Class>
+    
+
+
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter -->
+
+    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter"/>
     
 
 
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality -->
 
     <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality">
-        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Parameter"/>
     </owl:Class>
     
 
@@ -452,19 +445,9 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#SensorValue -->
-
-    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#SensorValue">
-        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Sensor"/>
-    </owl:Class>
-    
-
-
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service -->
 
-    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service">
-        <rdfs:subClassOf rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
-    </owl:Class>
+    <owl:Class rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
 </rdf:RDF>
 
 

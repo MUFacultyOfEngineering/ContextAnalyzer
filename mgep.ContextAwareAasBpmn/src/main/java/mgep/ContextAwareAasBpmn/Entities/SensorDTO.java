@@ -4,64 +4,75 @@ import java.io.Serializable;
 
 import mgep.ContextAwareAasBpmn.Enums.EnumSensorType;
 
-public class SensorDTO implements Serializable {
+public class SensorDTO extends DeviceDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String description;
-	private String name;
-	private String identifier;
-	private EnumSensorType type;
-	private String dataType;
-	private String dataValue;
-	private String dataUnit;
+	private String sensorDescription;
+	private String sensorIdentifier;
+	private String sensorName;
+	private EnumSensorType sensorType;
+	private String sensorValueDataType;
+	private String sensorValueDataValue;
+	private String sensorValueDataUnit;
 
 	public SensorDTO() {
 		super();
 	}
-	
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public EnumSensorType getType() {
-		return type;
-	}
-	public void setType(EnumSensorType type) {
-		this.type = type;
-	}
-	public String getDataType() {
-		return dataType;
-	}
-	public void setDataType(String dataType) {
-		this.dataType = dataType;
-	}
-	public String getDataValue() {
-		return dataValue;
-	}
-	public void setDataValue(String dataValue) {
-		this.dataValue = dataValue;
-	}
-	public String getDataUnit() {
-		return dataUnit;
-	}
-	public void setDataUnit(String dataUnit) {
-		this.dataUnit = dataUnit;
+
+	public String getSensorDescription() {
+		return sensorDescription;
 	}
 
-	public String getIdentifier() {
-		return identifier;
+	public void setSensorDescription(String sensorDescription) {
+		this.sensorDescription = sensorDescription;
 	}
 
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
+	public String getSensorIdentifier() {
+		return sensorIdentifier;
+	}
+
+	public void setSensorIdentifier(String sensorIdentifier) {
+		this.sensorIdentifier = sensorIdentifier;
+	}
+
+	public String getSensorName() {
+		return sensorName;
+	}
+
+	public void setSensorName(String sensorName) {
+		this.sensorName = sensorName;
+	}
+
+	public EnumSensorType getSensorType() {
+		return sensorType;
+	}
+
+	public void setSensorType(EnumSensorType sensorType) {
+		this.sensorType = sensorType;
+	}
+
+	public String getSensorValueDataType() {
+		return sensorValueDataType;
+	}
+
+	public void setSensorValueDataType(String sensorValueDataType) {
+		this.sensorValueDataType = sensorValueDataType;
+	}
+
+	public String getSensorValueDataValue() {
+		return sensorValueDataValue;
+	}
+
+	public void setSensorValueDataValue(String sensorValueDataValue) {
+		this.sensorValueDataValue = sensorValueDataValue;
+	}
+
+	public String getSensorValueDataUnit() {
+		return sensorValueDataUnit;
+	}
+
+	public void setSensorValueDataUnit(String sensorValueDataUnit) {
+		this.sensorValueDataUnit = sensorValueDataUnit;
 	}
 	
 }

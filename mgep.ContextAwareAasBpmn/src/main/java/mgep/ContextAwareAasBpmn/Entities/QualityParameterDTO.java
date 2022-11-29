@@ -2,71 +2,36 @@ package mgep.ContextAwareAasBpmn.Entities;
 
 import java.io.Serializable;
 
-public class QualityParameterDTO implements Serializable {
+public class QualityParameterDTO extends ParameterDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private String name;
-	private String correspondsTo;
-	private String dataType;
-	private String value;
-	private String evaluationExpression;
+
+	private String qualityParameterCorrespondsTo;
+	private String qualityParameterEvaluationExpression;
 	
 	public QualityParameterDTO() {
 		super();
 	}
 	
-	public QualityParameterDTO(String name, String evaluationExpression) {
-		super();
-		this.name=name;
-		this.evaluationExpression = evaluationExpression;
-	}
-	
-	public QualityParameterDTO(String name, String correspondsTo, String dataType, String value, String evaluationExpression) {
-		super();
-		this.name=name;
-		this.correspondsTo=correspondsTo;
-		this.dataType = dataType;
-		this.value=value;
-		this.evaluationExpression = evaluationExpression;
+	public QualityParameterDTO(String parameterName, String parameterType, String parameterValue, String qualityParameterCorrespondsTo, String qualityParameterEvaluationExpression) {
+		super(parameterName, parameterType, parameterValue);
+		this.qualityParameterCorrespondsTo = qualityParameterCorrespondsTo;
+		this.qualityParameterEvaluationExpression = qualityParameterEvaluationExpression;
 	}
 
-	public String getName() {
-		return name;
+
+	public String getQualityParameterCorrespondsTo() {
+		return qualityParameterCorrespondsTo;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setQualityParameterCorrespondsTo(String qualityParameterCorrespondsTo) {
+		this.qualityParameterCorrespondsTo = qualityParameterCorrespondsTo;
 	}
 
-	public String getCorrespondsTo() {
-		return correspondsTo;
+	public String getQualityParameterEvaluationExpression() {
+		return qualityParameterEvaluationExpression;
 	}
 
-	public void setCorrespondsTo(String correspondsTo) {
-		this.correspondsTo = correspondsTo;
+	public void setQualityParameterEvaluationExpression(String qualityParameterEvaluationExpression) {
+		this.qualityParameterEvaluationExpression = qualityParameterEvaluationExpression;
 	}
-
-	public String getDataType() {
-		return dataType;
-	}
-
-	public void setDataType(String dataType) {
-		this.dataType = dataType;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	public String getEvaluationExpression() {
-		return evaluationExpression;
-	}
-
-	public void setEvaluationExpression(String evaluationExpression) {
-		this.evaluationExpression = evaluationExpression;
-	}
-	
 }

@@ -3,84 +3,93 @@ package mgep.ContextAwareAasBpmn.Entities;
 import java.io.Serializable;
 import java.util.List;
 
-public class DeviceDTO implements Serializable {
+public class DeviceDTO extends AssetAdministrationShellDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String aasIdentifier;
-	private String apiDocumentation;
-	private String description;
-	private String identifier;
-	private String ipAddress;
-	private String isOnline;
-	private String name;
-	private String networkLatency;
+	private String deviceApiDocumentation;
+	private String deviceDescription;
+	private String deviceIdentifier;
+	private String deviceIPAddress;
+	private boolean deviceIsOnline;
+	private String deviceName;
+	private String deviceNetworkLatency;
 	private List<SensorDTO> sensors;
 	private List<ServiceDTO> services;
 	
 	public DeviceDTO() {
 		super();
 	}
-	
-	public String getAasIdentifier() {
-		return aasIdentifier;
+
+	public String getDeviceApiDocumentation() {
+		return deviceApiDocumentation;
 	}
-	public void setAasIdentifier(String aasIdentifier) {
-		this.aasIdentifier = aasIdentifier;
+
+	public void setDeviceApiDocumentation(String deviceApiDocumentation) {
+		this.deviceApiDocumentation = deviceApiDocumentation;
 	}
-	public String getApiDocumentation() {
-		return apiDocumentation;
+
+	public String getDeviceDescription() {
+		return deviceDescription;
 	}
-	public void setApiDocumentation(String apiDocumentation) {
-		this.apiDocumentation = apiDocumentation;
+
+	public void setDeviceDescription(String deviceDescription) {
+		this.deviceDescription = deviceDescription;
 	}
-	public String getDescription() {
-		return description;
+
+	public String getDeviceIdentifier() {
+		return deviceIdentifier;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+	public void setDeviceIdentifier(String deviceIdentifier) {
+		this.deviceIdentifier = deviceIdentifier;
 	}
-	public String getIdentifier() {
-		return identifier;
+
+	public String getDeviceIPAddress() {
+		return deviceIPAddress;
 	}
-	public void setIdentifier(String identifier) {
-		this.identifier = identifier;
+
+	public void setDeviceIPAddress(String deviceIPAddress) {
+		this.deviceIPAddress = deviceIPAddress;
 	}
-	public String getIpAddress() {
-		return ipAddress;
+
+	public boolean getDeviceIsOnline() {
+		return deviceIsOnline;
 	}
-	public void setIpAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
+
+	public void setDeviceIsOnline(boolean deviceIsOnline) {
+		this.deviceIsOnline = deviceIsOnline;
 	}
-	public String getIsOnline() {
-		return isOnline;
+
+	public String getDeviceName() {
+		return deviceName;
 	}
-	public void setIsOnline(String isOnline) {
-		this.isOnline = isOnline;
+
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
 	}
-	public String getName() {
-		return name;
+
+	public String getDeviceNetworkLatency() {
+		return deviceNetworkLatency;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setDeviceNetworkLatency(String deviceNetworkLatency) {
+		this.deviceNetworkLatency = deviceNetworkLatency;
 	}
-	public String getNetworkLatency() {
-		return networkLatency;
-	}
-	public void setNetworkLatency(String networkLatency) {
-		this.networkLatency = networkLatency;
-	}
+
 	public List<SensorDTO> getSensors() {
 		return sensors;
 	}
+
 	public void setSensors(List<SensorDTO> sensors) {
 		this.sensors = sensors;
 	}
+
 	public List<ServiceDTO> getServices() {
 		return services;
 	}
+
 	public void setServices(List<ServiceDTO> services) {
 		this.services = services;
 	}
-	
 	
 }

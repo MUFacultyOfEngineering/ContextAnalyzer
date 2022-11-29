@@ -7,31 +7,31 @@ public class ServiceDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String aasIdentifier;
-	private String url;
-	private String method;
-	private boolean isAsync;
-	private String name;
+	private String serviceDescription;
 	private String serviceIdentifier;
-	private String description;
-	private String requestBody;
-	private String responseBody;
-	private List<ServiceParameterDTO> inputParameters;
-	private List<ServiceParameterDTO> outputParameters;
-	private List<QualityParameterDTO> qualityParameters;
+	private boolean serviceIsAsync;
+	private String serviceMethod;
+	private String serviceName;
+	private String serviceUrl;
+	private String serviceRequestBody;
+	private String serviceResponseBody;
+	private List<ParameterDTO> serviceInputParameters;
+	private List<ParameterDTO> serviceOutputParameters;
+	private List<QualityParameterDTO> serviceQualityParameters;
 	
 	public ServiceDTO() {
 		super();
-	}
-	
-	public ServiceDTO(String aasIdentifier, String serviceIdentifier, String url, String method, boolean isAsync, String name, String description) {
+	}	
+
+	public ServiceDTO(String aasIdentifier, String serviceIdentifier, String serviceUrl, String serviceMethod, boolean serviceIsAsync, String serviceName, String serviceDescription) {
 		super();
 		this.aasIdentifier = aasIdentifier;
+		this.serviceDescription = serviceDescription;
 		this.serviceIdentifier = serviceIdentifier;
-		this.url = url;
-		this.method = method;
-		this.isAsync = isAsync;
-		this.name = name;
-		this.description=description;
+		this.serviceIsAsync = serviceIsAsync;
+		this.serviceMethod = serviceMethod;
+		this.serviceName = serviceName;
+		this.serviceUrl = serviceUrl;
 	}
 
 	public String getAasIdentifier() {
@@ -42,36 +42,12 @@ public class ServiceDTO implements Serializable {
 		this.aasIdentifier = aasIdentifier;
 	}
 
-	public String getUrl() {
-		return url;
+	public String getServiceDescription() {
+		return serviceDescription;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public String getMethod() {
-		return method;
-	}
-
-	public void setMethod(String method) {
-		this.method = method;
-	}
-
-	public boolean isAsync() {
-		return isAsync;
-	}
-
-	public void setAsync(boolean isAsync) {
-		this.isAsync = isAsync;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setServiceDescription(String serviceDescription) {
+		this.serviceDescription = serviceDescription;
 	}
 
 	public String getServiceIdentifier() {
@@ -82,51 +58,76 @@ public class ServiceDTO implements Serializable {
 		this.serviceIdentifier = serviceIdentifier;
 	}
 
-	public String getDescription() {
-		return description;
+	public boolean isServiceIsAsync() {
+		return serviceIsAsync;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setServiceIsAsync(boolean serviceIsAsync) {
+		this.serviceIsAsync = serviceIsAsync;
 	}
 
-	public String getRequestBody() {
-		return requestBody;
+	public String getServiceMethod() {
+		return serviceMethod;
 	}
 
-	public void setRequestBody(String requestBody) {
-		this.requestBody = requestBody;
+	public void setServiceMethod(String serviceMethod) {
+		this.serviceMethod = serviceMethod;
 	}
 
-	public String getResponseBody() {
-		return responseBody;
+	public String getServiceName() {
+		return serviceName;
 	}
 
-	public void setResponseBody(String responseBody) {
-		this.responseBody = responseBody;
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
 	}
 
-	public List<ServiceParameterDTO> getInputParameters() {
-		return inputParameters;
+	public String getServiceUrl() {
+		return serviceUrl;
 	}
 
-	public void setInputParameters(List<ServiceParameterDTO> inputParameters) {
-		this.inputParameters = inputParameters;
+	public void setServiceUrl(String serviceUrl) {
+		this.serviceUrl = serviceUrl;
 	}
 
-	public List<ServiceParameterDTO> getOutputParameters() {
-		return outputParameters;
+	public String getServiceRequestBody() {
+		return serviceRequestBody;
 	}
 
-	public void setOutputParameters(List<ServiceParameterDTO> outputParameters) {
-		this.outputParameters = outputParameters;
+	public void setServiceRequestBody(String serviceRequestBody) {
+		this.serviceRequestBody = serviceRequestBody;
 	}
 
-	public List<QualityParameterDTO> getQualityParameters() {
-		return qualityParameters;
+	public String getServiceResponseBody() {
+		return serviceResponseBody;
 	}
 
-	public void setQualityParameters(List<QualityParameterDTO> qualityParameters) {
-		this.qualityParameters = qualityParameters;
+	public void setServiceResponseBody(String serviceResponseBody) {
+		this.serviceResponseBody = serviceResponseBody;
 	}
+
+	public List<ParameterDTO> getServiceInputParameters() {
+		return serviceInputParameters;
+	}
+
+	public void setServiceInputParameters(List<ParameterDTO> serviceInputParameters) {
+		this.serviceInputParameters = serviceInputParameters;
+	}
+
+	public List<ParameterDTO> getServiceOutputParameters() {
+		return serviceOutputParameters;
+	}
+
+	public void setServiceOutputParameters(List<ParameterDTO> serviceOutputParameters) {
+		this.serviceOutputParameters = serviceOutputParameters;
+	}
+
+	public List<QualityParameterDTO> getServiceQualityParameters() {
+		return serviceQualityParameters;
+	}
+
+	public void setServiceQualityParameters(List<QualityParameterDTO> serviceQualityParameters) {
+		this.serviceQualityParameters = serviceQualityParameters;
+	}
+	
 }
