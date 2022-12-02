@@ -21,14 +21,6 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasApiDocumentation -->
-
-    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasApiDocumentation">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasDevice -->
 
     <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasDevice">
@@ -57,12 +49,10 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasParameter -->
+    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasQuality -->
 
-    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasParameter">
+    <owl:ObjectProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#hasQuality">
         <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
-        <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Input"/>
-        <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
         <rdfs:range rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
     </owl:ObjectProperty>
     

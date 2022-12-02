@@ -7,7 +7,6 @@ public class ResponseContextValServiceSelectionDTO implements Serializable {
 
 	private boolean canExecute;
 	private String message;
-	private ServiceDTO requestedService;
 	private ServiceDTO suggestedService;
 	
 	public ResponseContextValServiceSelectionDTO(boolean canExecute, String message) {
@@ -30,14 +29,6 @@ public class ResponseContextValServiceSelectionDTO implements Serializable {
 
 	public void setMessage(String message) {
 		this.message = message;
-	}
-
-	public ServiceDTO getRequestedService() {
-		return requestedService;
-	}
-
-	public void setRequestedService(ServiceDTO requestedService) {
-		this.requestedService = requestedService;
 	}
 
 	public ServiceDTO getSuggestedService() {

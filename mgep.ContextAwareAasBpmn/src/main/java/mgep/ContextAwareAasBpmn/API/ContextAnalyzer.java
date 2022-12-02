@@ -82,7 +82,7 @@ public class ContextAnalyzer {
     	return Response.ok(new RDFDAL().GetServicesByParamName(inputParamName, outputParamName)).build();
     }
 
-    @GET
+    @POST
     @Path("/ValidateContextSelectBestService")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)

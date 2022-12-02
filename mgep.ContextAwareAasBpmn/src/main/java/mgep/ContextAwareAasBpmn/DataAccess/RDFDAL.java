@@ -500,9 +500,7 @@ public class RDFDAL {
 			
 			requestedServiceObj = mapServiceModelObjToDTO(bindingSet.get(0));
 			
-			//set input, output and quality parameters
-			requestedServiceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(requestedServiceObj.getServiceIdentifier()));
-			requestedServiceObj.setServiceOutputParameters(GetServiceOutputParametersByServiceId(requestedServiceObj.getServiceIdentifier()));
+			//set quality parameters
 			requestedServiceObj.setServiceQualityParameters(GetServiceQualityParametersByServiceId(requestedServiceObj.getServiceIdentifier()));	
 		} catch (Exception e) {
 			log.catching(e);
@@ -553,12 +551,12 @@ public class RDFDAL {
 			List<BindingSet> lBindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, querySuggestedService);
 			if(!lBindingSet.isEmpty()) {
 				for (BindingSet item : lBindingSet) {
-					suggestedServiceObj = mapServiceModelObjToDTO(item);
-					
+					String serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();					
 					//if is the same as the one requested, do nothing and seek for the next one
-					if(suggestedServiceObj.getServiceIdentifier().equals(requestedServiceObj.getServiceIdentifier())) continue;
-					//if already selected, break loop
-					if(suggestedServiceObj != null) break;
+					if(serviceIdentifier.equals(requestedServiceObj.getServiceIdentifier())) continue;
+					//set suggestedService and  break loop
+					suggestedServiceObj = mapServiceModelObjToDTO(item);
+					break;
 				}
 			}			
 		} catch (Exception e) {
@@ -569,7 +567,6 @@ public class RDFDAL {
 		
 		//prepare response
 		ResponseContextValServiceSelectionDTO contextValidationResult = new ResponseContextValServiceSelectionDTO(true, "OK");
-		contextValidationResult.setRequestedService(requestedServiceObj);
 		
 		//if suggestedService is found: set input, output and quality parameters
 		if(suggestedServiceObj != null) {
