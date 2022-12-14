@@ -20,8 +20,8 @@ A context analyzer component for service re-selection based on quality of servic
     - Request body:
     ``` 
     {
-        "aasIdentifier": "AssetAdministrationShell---1",
-        "serviceName": "Service_ThrowPiece",
+        "aasIdShort": "AASLegoColorSorter01",
+        "serviceName": "ThrowCurrentPiece",
         "qualityParameters": [
             {
                 "name": "AvgNetworkLatency",
@@ -41,9 +41,10 @@ A context analyzer component for service re-selection based on quality of servic
         "message": "A better service is recomended after evaluation of quality of service parameters",
         "suggestedService": {
             "aasIdentifier": "AssetAdministrationShell---2",
+			"aasIdShort": "AASLegoColorSorter02",
             "url": "http://192.168.56.102:80/robot/throw_piece",
             "method": "POST",
-            "name": "Service_ThrowPiece",
+            "name": "ThrowCurrentPiece",
             "serviceIdentifier": "313295db-3f90-4a3a-9ef1-5767a39fb0df",
             "description": "Throws current piece out of the feed tray",
             "requestBody": null,

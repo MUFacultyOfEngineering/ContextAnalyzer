@@ -7,6 +7,7 @@ public class ServiceDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String aasIdentifier;
+	private String aasIdShort;
 	private String serviceDescription;
 	private String serviceIdentifier;
 	private boolean serviceIsAsync;
@@ -23,9 +24,10 @@ public class ServiceDTO implements Serializable {
 		super();
 	}	
 
-	public ServiceDTO(String aasIdentifier, String serviceIdentifier, String serviceUrl, String serviceMethod, boolean serviceIsAsync, String serviceName, String serviceDescription) {
+	public ServiceDTO(String aasIdentifier, String aasIdShort, String serviceIdentifier, String serviceUrl, String serviceMethod, boolean serviceIsAsync, String serviceName, String serviceDescription) {
 		super();
 		this.aasIdentifier = aasIdentifier;
+		this.aasIdShort = aasIdShort;
 		this.serviceDescription = serviceDescription;
 		this.serviceIdentifier = serviceIdentifier;
 		this.serviceIsAsync = serviceIsAsync;
@@ -128,6 +130,14 @@ public class ServiceDTO implements Serializable {
 
 	public void setServiceQualityParameters(List<QualityParameterDTO> serviceQualityParameters) {
 		this.serviceQualityParameters = serviceQualityParameters;
+	}
+
+	public String getAasIdShort() {
+		return aasIdShort;
+	}
+
+	public void setAasIdShort(String aasIdShort) {
+		this.aasIdShort = aasIdShort;
 	}
 	
 }

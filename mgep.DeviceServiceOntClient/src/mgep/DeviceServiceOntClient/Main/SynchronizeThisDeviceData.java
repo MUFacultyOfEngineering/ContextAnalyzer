@@ -17,8 +17,8 @@ public class SynchronizeThisDeviceData {
 		while(true) {
 			//delete all
 			System.out.println("Deleting");
-			String prepareDelete = "delete where {?s ?o ?p};";
-			repManager.executeQuery(Tools.REPOSITORY_ID, prepareDelete);
+			//String prepareDelete = "delete where {?s ?o ?p};";
+			//repManager.executeQuery(Tools.REPOSITORY_ID, prepareDelete);
 			
 			for (int i = 1; i <= 3; i++) {
 				insertColorSorters(repManager, i, "192.168.56.10" + i);
@@ -65,13 +65,32 @@ public class SynchronizeThisDeviceData {
 		List<ServiceDTO> lServices = new ArrayList<ServiceDTO>();
 		deviceObj.setServices(lServices);
 		
+		//GetPieceColor
+		ServiceDTO serviceGetPieceColor = new ServiceDTO();
+		serviceGetPieceColor.setServiceIdentifier(UUID.randomUUID().toString());
+		serviceGetPieceColor.setServiceUrl("http://" + deviceIpAddress + ":80/brickpi/sensor/color/value");
+		serviceGetPieceColor.setServiceMethod(EnumServiceMethod.GET.name());
+		serviceGetPieceColor.setServiceIsAsync(false);
+		serviceGetPieceColor.setServiceName("GetPieceColor");
+		serviceGetPieceColor.setServiceDescription("Gets current piece color");
+		serviceGetPieceColor.setAasIdentifier(deviceObj.getAasIdentifier());
+		
+		//outputs
+		List<ParameterDTO> opsServiceGetPieceColor = new ArrayList<ParameterDTO>();
+		opsServiceGetPieceColor.add(new ParameterDTO("color", "text", "Yellow|Red|Blue|Green"));
+		serviceGetPieceColor.setServiceOutputParameters(opsServiceGetPieceColor);
+
+		//quality		
+		serviceGetPieceColor.setServiceQualityParameters(generateQoS());
+		lServices.add(serviceGetPieceColor);
+		
 		//motorStatus
 		ServiceDTO serviceMotorStatus = new ServiceDTO();
 		serviceMotorStatus.setServiceIdentifier(UUID.randomUUID().toString());
 		serviceMotorStatus.setServiceUrl("http://" + deviceIpAddress + ":80/brickpi/motor/{motor_id}/status");
 		serviceMotorStatus.setServiceMethod(EnumServiceMethod.GET.name());
 		serviceMotorStatus.setServiceIsAsync(true);
-		serviceMotorStatus.setServiceName("Service_GetMotorStatus");
+		serviceMotorStatus.setServiceName("GetMotorStatus");
 		serviceMotorStatus.setServiceDescription("Gets motor status");
 		serviceMotorStatus.setAasIdentifier(deviceObj.getAasIdentifier());
 		
@@ -85,124 +104,116 @@ public class SynchronizeThisDeviceData {
 		opsServiceMotorStatus.add(new ParameterDTO("motor_status", "json", "STOPPED|MOVING|THROWING"));
 		serviceMotorStatus.setServiceOutputParameters(opsServiceMotorStatus);
 
-		//quality
-		List<QualityParameterDTO> qosServiceMotorStatus = new ArrayList<QualityParameterDTO>();
-		qosServiceMotorStatus.add(new QualityParameterDTO("SuccessRate", "Decimal", String.valueOf(Tools.GetRandomNumber(50, 100)), EnumQualityType.SERVICE.name(), "SuccessRate >= 80"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("AvgResponseTime", "Integer", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "AvgResponseTime <= 1000"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("SIZE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "SIZE <= 10"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("BATTERY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "BATTERY >= 65"));
-		qosServiceMotorStatus.add(new QualityParameterDTO("PROXIMITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "PROXIMITY <= 70"));		
-		serviceMotorStatus.setServiceQualityParameters(qosServiceMotorStatus);
+		//quality		
+		serviceMotorStatus.setServiceQualityParameters(generateQoS());
 		lServices.add(serviceMotorStatus);
 		
-		//moveLeft
-		ServiceDTO serviceMoveLeft = new ServiceDTO();
-		serviceMoveLeft.setServiceIdentifier(UUID.randomUUID().toString());
-		serviceMoveLeft.setServiceUrl("http://" + deviceIpAddress + ":80/robot/move_left");
-		serviceMoveLeft.setServiceMethod(EnumServiceMethod.POST.name());
-		serviceMoveLeft.setServiceIsAsync(true);
-		serviceMoveLeft.setServiceName("Service_MoveLeft");
-		serviceMoveLeft.setServiceDescription("Moves feed tray to far left");
-		serviceMoveLeft.setAasIdentifier(deviceObj.getAasIdentifier());
+		//MoveFeedTrayToFarLeft
+		ServiceDTO serviceMoveFeedTrayToFarLeft = new ServiceDTO();
+		serviceMoveFeedTrayToFarLeft.setServiceIdentifier(UUID.randomUUID().toString());
+		serviceMoveFeedTrayToFarLeft.setServiceUrl("http://" + deviceIpAddress + ":80/robot/move_left");
+		serviceMoveFeedTrayToFarLeft.setServiceMethod(EnumServiceMethod.POST.name());
+		serviceMoveFeedTrayToFarLeft.setServiceIsAsync(true);
+		serviceMoveFeedTrayToFarLeft.setServiceName("MoveFeedTrayToFarLeft");
+		serviceMoveFeedTrayToFarLeft.setServiceDescription("Moves feed tray to far left");
+		serviceMoveFeedTrayToFarLeft.setAasIdentifier(deviceObj.getAasIdentifier());
 		
 		//outputs
-		List<ParameterDTO> outputParametersServiceMoveLeft = new ArrayList<ParameterDTO>();
-		outputParametersServiceMoveLeft.add(new ParameterDTO("message_moving_motor", "json", "{"
+		List<ParameterDTO> outputParametersServiceMoveFeedTrayToFarLeft = new ArrayList<ParameterDTO>();
+		outputParametersServiceMoveFeedTrayToFarLeft.add(new ParameterDTO("message_moving_motor", "json", "{"
 				+ "  \'message\': \'Moving left\',"
 				+ "  \'motor_id\': \'move\'"
 				+ "}"));
-		serviceMoveLeft.setServiceOutputParameters(outputParametersServiceMoveLeft);
+		serviceMoveFeedTrayToFarLeft.setServiceOutputParameters(outputParametersServiceMoveFeedTrayToFarLeft);
 		
-		//quality
-		List<QualityParameterDTO> qosServiceMoveLeft = new ArrayList<QualityParameterDTO>();
-		qosServiceMoveLeft.add(new QualityParameterDTO("SuccessRate", "Decimal", String.valueOf(Tools.GetRandomNumber(50, 100)), EnumQualityType.SERVICE.name(), "SuccessRate >= 80"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("AvgResponseTime", "Integer", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "AvgResponseTime <= 1000"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("SIZE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "SIZE <= 10"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("BATTERY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "BATTERY >= 65"));
-		qosServiceMoveLeft.add(new QualityParameterDTO("PROXIMITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "PROXIMITY <= 70"));	
-		serviceMoveLeft.setServiceQualityParameters(qosServiceMoveLeft);
-		lServices.add(serviceMoveLeft);
+		//quality	
+		serviceMoveFeedTrayToFarLeft.setServiceQualityParameters(generateQoS());
+		lServices.add(serviceMoveFeedTrayToFarLeft);
 		
-		//moveRight
-		ServiceDTO serviceMoveRight = new ServiceDTO();
-		serviceMoveRight.setServiceIdentifier(UUID.randomUUID().toString());
-		serviceMoveRight.setServiceUrl("http://" + deviceIpAddress + ":80/robot/move_right");
-		serviceMoveRight.setServiceMethod(EnumServiceMethod.POST.name());
-		serviceMoveRight.setServiceIsAsync(true);
-		serviceMoveRight.setServiceName("Service_MoveRight");
-		serviceMoveRight.setServiceDescription("Moves feed tray to far right");
-		serviceMoveRight.setAasIdentifier(deviceObj.getAasIdentifier());
+		//MoveFeedTrayToFarRight
+		ServiceDTO serviceMoveFeedTrayToFarRight = new ServiceDTO();
+		serviceMoveFeedTrayToFarRight.setServiceIdentifier(UUID.randomUUID().toString());
+		serviceMoveFeedTrayToFarRight.setServiceUrl("http://" + deviceIpAddress + ":80/robot/move_right");
+		serviceMoveFeedTrayToFarRight.setServiceMethod(EnumServiceMethod.POST.name());
+		serviceMoveFeedTrayToFarRight.setServiceIsAsync(true);
+		serviceMoveFeedTrayToFarRight.setServiceName("MoveFeedTrayToFarRight");
+		serviceMoveFeedTrayToFarRight.setServiceDescription("Moves feed tray to far right");
+		serviceMoveFeedTrayToFarRight.setAasIdentifier(deviceObj.getAasIdentifier());
 
 		//outputs
-		List<ParameterDTO> serviceOutputParametersServiceMoveRight = new ArrayList<ParameterDTO>();
-		serviceOutputParametersServiceMoveRight.add(new ParameterDTO("message_moving_motor", "json", "{"
+		List<ParameterDTO> serviceOutputParametersServiceMoveFeedTrayToFarRight = new ArrayList<ParameterDTO>();
+		serviceOutputParametersServiceMoveFeedTrayToFarRight.add(new ParameterDTO("message_moving_motor", "json", "{"
 				+ "  \'message\': \'Moving right\',"
 				+ "  \'motor_id\': \'move\'"
 				+ "}"));
-		serviceMoveRight.setServiceOutputParameters(serviceOutputParametersServiceMoveRight);
+		serviceMoveFeedTrayToFarRight.setServiceOutputParameters(serviceOutputParametersServiceMoveFeedTrayToFarRight);
 		
-		//quality
-		List<QualityParameterDTO> qosServiceMoveRight = new ArrayList<QualityParameterDTO>();
-		qosServiceMoveRight.add(new QualityParameterDTO("SuccessRate", "Decimal", String.valueOf(Tools.GetRandomNumber(50, 100)), EnumQualityType.SERVICE.name(), "SuccessRate >= 80"));
-		qosServiceMoveRight.add(new QualityParameterDTO("AvgResponseTime", "Integer", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "AvgResponseTime <= 1000"));
-		qosServiceMoveRight.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
-		qosServiceMoveRight.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
-		qosServiceMoveRight.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
-		qosServiceMoveRight.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
-		qosServiceMoveRight.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
-		qosServiceMoveRight.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
-		qosServiceMoveRight.add(new QualityParameterDTO("SIZE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "SIZE <= 10"));
-		qosServiceMoveRight.add(new QualityParameterDTO("BATTERY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "BATTERY >= 65"));
-		qosServiceMoveRight.add(new QualityParameterDTO("PROXIMITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "PROXIMITY <= 70"));	
-		serviceMoveRight.setServiceQualityParameters(qosServiceMoveRight);
-		lServices.add(serviceMoveRight);
+		//quality	
+		serviceMoveFeedTrayToFarRight.setServiceQualityParameters(generateQoS());
+		lServices.add(serviceMoveFeedTrayToFarRight);
 		
-		//throwPiece
-		ServiceDTO serviceThrowPiece = new ServiceDTO();
-		serviceThrowPiece.setServiceIdentifier(UUID.randomUUID().toString());
-		serviceThrowPiece.setServiceUrl("http://" + deviceIpAddress + ":80/robot/throw_piece");
-		serviceThrowPiece.setServiceMethod(EnumServiceMethod.POST.name());
-		serviceThrowPiece.setServiceIsAsync(true);
-		serviceThrowPiece.setServiceName("Service_ThrowPiece");
-		serviceThrowPiece.setServiceDescription("Throws current piece out of the feed tray");
-		serviceThrowPiece.setAasIdentifier(deviceObj.getAasIdentifier());
+		//ThrowCurrentPiece
+		ServiceDTO serviceThrowCurrentPiece = new ServiceDTO();
+		serviceThrowCurrentPiece.setServiceIdentifier(UUID.randomUUID().toString());
+		serviceThrowCurrentPiece.setServiceUrl("http://" + deviceIpAddress + ":80/robot/throw_piece");
+		serviceThrowCurrentPiece.setServiceMethod(EnumServiceMethod.POST.name());
+		serviceThrowCurrentPiece.setServiceIsAsync(true);
+		serviceThrowCurrentPiece.setServiceName("ThrowCurrentPiece");
+		serviceThrowCurrentPiece.setServiceDescription("Throws current piece out of the feed tray");
+		serviceThrowCurrentPiece.setAasIdentifier(deviceObj.getAasIdentifier());
 
 		//outputs
-		List<ParameterDTO> opsServiceThrowPiece = new ArrayList<ParameterDTO>();
-		opsServiceThrowPiece.add(new ParameterDTO("message_piece_thrown", "json", "{"
+		List<ParameterDTO> opsServiceThrowCurrentPiece = new ArrayList<ParameterDTO>();
+		opsServiceThrowCurrentPiece.add(new ParameterDTO("message_piece_thrown", "json", "{"
 				+ "  \'message\': \'piece thrown\',"
 				+ "  \'next_color\': \'Yellow\',"
 				+ "  \'thrown_color\': \'Blue\'"
 				+ "}"));
-		serviceThrowPiece.setServiceOutputParameters(opsServiceThrowPiece);
+		serviceThrowCurrentPiece.setServiceOutputParameters(opsServiceThrowCurrentPiece);
 		
-		//quality
-		List<QualityParameterDTO> qosServiceThrowPiece = new ArrayList<QualityParameterDTO>();
-		qosServiceThrowPiece.add(new QualityParameterDTO("SuccessRate", "Decimal", String.valueOf(Tools.GetRandomNumber(50, 100)), EnumQualityType.SERVICE.name(), "SuccessRate >= 80"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("AvgResponseTime", "Integer", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "AvgResponseTime <= 1000"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("SIZE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "SIZE <= 10"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("BATTERY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "BATTERY >= 65"));
-		qosServiceThrowPiece.add(new QualityParameterDTO("PROXIMITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "PROXIMITY <= 70"));	
-		serviceThrowPiece.setServiceQualityParameters(qosServiceThrowPiece);
-		lServices.add(serviceThrowPiece);
+		//quality	
+		serviceThrowCurrentPiece.setServiceQualityParameters(generateQoS());
+		lServices.add(serviceThrowCurrentPiece);
+		
+		
+		
+		//IsFeedTrayToFarRight
+		ServiceDTO serviceIsFeedTrayToFarRight = new ServiceDTO();
+		serviceIsFeedTrayToFarRight.setServiceIdentifier(UUID.randomUUID().toString());
+		serviceIsFeedTrayToFarRight.setServiceUrl("http://" + deviceIpAddress + ":80/brickpi/sensor/touch_right/value");
+		serviceIsFeedTrayToFarRight.setServiceMethod(EnumServiceMethod.GET.name());
+		serviceIsFeedTrayToFarRight.setServiceIsAsync(false);
+		serviceIsFeedTrayToFarRight.setServiceName("IsFeedTrayToFarRight");
+		serviceIsFeedTrayToFarRight.setServiceDescription("Evaluates whether the feed tray is positioned at far right of the conveyor");
+		serviceIsFeedTrayToFarRight.setAasIdentifier(deviceObj.getAasIdentifier());
+
+		//outputs
+		List<ParameterDTO> opsServiceIsFeedTrayToFarRight = new ArrayList<ParameterDTO>();
+		opsServiceIsFeedTrayToFarRight.add(new ParameterDTO("IsFeedTrayToFarRight", "bool", "true|false"));
+		serviceIsFeedTrayToFarRight.setServiceOutputParameters(opsServiceIsFeedTrayToFarRight);
+		
+		//quality	
+		serviceIsFeedTrayToFarRight.setServiceQualityParameters(generateQoS());
+		lServices.add(serviceIsFeedTrayToFarRight);
+				
+		//IsFeedTrayToFarLeft
+		ServiceDTO serviceIsFeedTrayToFarLeft = new ServiceDTO();
+		serviceIsFeedTrayToFarLeft.setServiceIdentifier(UUID.randomUUID().toString());
+		serviceIsFeedTrayToFarLeft.setServiceUrl("http://" + deviceIpAddress + ":80/brickpi/sensor/touch_left/value");
+		serviceIsFeedTrayToFarLeft.setServiceMethod(EnumServiceMethod.GET.name());
+		serviceIsFeedTrayToFarLeft.setServiceIsAsync(false);
+		serviceIsFeedTrayToFarLeft.setServiceName("IsFeedTrayToFarLeft");
+		serviceIsFeedTrayToFarLeft.setServiceDescription("Evaluates whether the feed tray is positioned at far left of the conveyor");
+		serviceIsFeedTrayToFarLeft.setAasIdentifier(deviceObj.getAasIdentifier());
+
+		//outputs
+		List<ParameterDTO> opsServiceIsFeedTrayToFarLeft = new ArrayList<ParameterDTO>();
+		opsServiceIsFeedTrayToFarLeft.add(new ParameterDTO("IsFeedTrayToFarLeft", "bool", "true|false"));
+		serviceIsFeedTrayToFarLeft.setServiceOutputParameters(opsServiceIsFeedTrayToFarLeft);
+		
+		//quality	
+		serviceIsFeedTrayToFarLeft.setServiceQualityParameters(generateQoS());
+		lServices.add(serviceIsFeedTrayToFarLeft);
 		
 		//build query insert
 		String queryInsert = prepareInsertDeviceQuery(deviceObj);
@@ -321,5 +332,21 @@ public class SynchronizeThisDeviceData {
 				+ "    dsOnt:" + deviceName + " dsOnt:hasService dsOnt:" + fullserviceName
 				+ "};";
 		return insertServiceQuery;
+	}
+	
+	private static List<QualityParameterDTO> generateQoS(){
+		List<QualityParameterDTO> qos = new ArrayList<QualityParameterDTO>();
+		qos.add(new QualityParameterDTO("SuccessRate", "Decimal", String.valueOf(Tools.GetRandomNumber(50, 100)), EnumQualityType.SERVICE.name(), "SuccessRate >= 80"));
+		qos.add(new QualityParameterDTO("AvgResponseTime", "Integer", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "AvgResponseTime <= 1000"));
+		qos.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
+		qos.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
+		qos.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
+		qos.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
+		qos.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
+		qos.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
+		qos.add(new QualityParameterDTO("SIZE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "SIZE <= 10"));
+		qos.add(new QualityParameterDTO("BATTERY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "BATTERY >= 65"));
+		qos.add(new QualityParameterDTO("PROXIMITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "PROXIMITY <= 70"));
+		return qos;
 	}
 }

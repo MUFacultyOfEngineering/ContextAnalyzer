@@ -21,6 +21,7 @@ public class RDFDAL {
 		if(modelObj == null) return null;
 		
 		String aasId = modelObj.getBinding("aasIdentifier").getValue().stringValue();
+		String aasIdShort = modelObj.getBinding("aasIdShort").getValue().stringValue();
 		String servName = modelObj.getBinding("serviceName").getValue().stringValue();
 		String serviceIdentifier = modelObj.getBinding("serviceIdentifier").getValue().stringValue();
 		String serviceUrl = modelObj.getBinding("serviceUrl").getValue().stringValue();
@@ -29,6 +30,7 @@ public class RDFDAL {
 		boolean serviceIsAsync = Boolean.parseBoolean(modelObj.getBinding("serviceIsAsync").getValue().stringValue());
 		
 		ServiceDTO serviceObj = new ServiceDTO();
+		serviceObj.setAasIdShort(aasIdShort);
 		serviceObj.setAasIdentifier(aasId);
 		serviceObj.setServiceIdentifier(serviceIdentifier);
 		serviceObj.setServiceUrl(serviceUrl);
@@ -486,7 +488,7 @@ public class RDFDAL {
 				+ "    ?service dsOnt:serviceMethod ?serviceMethod .\r\n"
 				+ "    ?service dsOnt:serviceIsAsync ?serviceIsAsync .\r\n"
 				+ "    ?service dsOnt:serviceDescription ?serviceDescription .\r\n"
-				+ "    filter (?aasIdentifier = \"" + requestObj.getAasIdentifier() + "\") .\r\n"
+				+ "    filter (?aasIdShort = \"" + requestObj.getAasIdShort() + "\") .\r\n"
 				+ "    filter (?serviceName = \"" + requestObj.getServiceName() + "\") .\r\n"
 				+ "} limit 100";
 		

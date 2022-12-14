@@ -6,7 +6,7 @@ import java.util.List;
 public class RequestContextValServiceSelectionDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	private String aasIdentifier;
+	private String aasIdShort;
 	private String serviceName;
 	private List<QualityParameterDTO> qualityParameters;
 	
@@ -14,25 +14,19 @@ public class RequestContextValServiceSelectionDTO implements Serializable {
 		super();
 	}
 	
-	public RequestContextValServiceSelectionDTO(String aasIdentifier, String serviceName) {
+	public RequestContextValServiceSelectionDTO(String aasIdShort, String serviceName) {
 		super();
-		this.aasIdentifier = aasIdentifier;
+		this.aasIdShort = aasIdShort;
 		this.serviceName = serviceName;
 	}
 	
-	public RequestContextValServiceSelectionDTO(String aasIdentifier, String serviceName, List<QualityParameterDTO> qualityParameters) {
+	public RequestContextValServiceSelectionDTO(String aasIdShort, String serviceName, List<QualityParameterDTO> qualityParameters) {
 		super();
-		this.aasIdentifier = aasIdentifier;
+		this.aasIdShort = aasIdShort;
 		this.serviceName = serviceName;
 		this.qualityParameters = qualityParameters;
 	}
 	
-	public String getAasIdentifier() {
-		return aasIdentifier;
-	}
-	public void setAasIdentifier(String aasIdentifier) {
-		this.aasIdentifier = aasIdentifier;
-	}
 	public String getServiceName() {
 		return serviceName;
 	}
@@ -44,5 +38,11 @@ public class RequestContextValServiceSelectionDTO implements Serializable {
 	}
 	public void setQualityParameters(List<QualityParameterDTO> qualityParameters) {
 		this.qualityParameters = qualityParameters;
+	}
+	public String getAasIdShort() {
+		return aasIdShort;
+	}
+	public void setAasIdShort(String aasIdShort) {
+		this.aasIdShort = aasIdShort;
 	}
 }
