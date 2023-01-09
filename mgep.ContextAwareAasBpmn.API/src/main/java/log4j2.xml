@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+	<Properties>
+		<Property name="basePath">C:\apache-tomcat-8.5.61\webapps\ContextAwareAasBpmn\Logs</Property>
+	</Properties>
+	<Appenders>
+		<Console name="LogToConsole" target="SYSTEM_OUT">
+			<PatternLayout>
+				<Pattern>%d %p %c [%t] - %m%n</Pattern>
+			</PatternLayout>
+		</Console>
+		<RollingFile name="LogToRollingFile" fileName="${basePath}/logfile.log" filePattern="${basePath}/logfile%d{yyyyMMdd}.log">
+			<PatternLayout>
+				<Pattern>%d %p %c [%t] - %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="mgep.ContextAwareAasBpmn" level="ALL" additivity="false">
+			<AppenderRef ref="LogToRollingFile" />
+		</Logger>
+		<Root level="ERROR">
+			<AppenderRef ref="LogToConsole" />
+		</Root>
+	</Loggers>
+</Configuration>
