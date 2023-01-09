@@ -3,18 +3,18 @@ A context analyzer component for service re-selection based on quality of servic
 
 ## Important resources
 - The ontology file can be found at [DeviceServiceOnt.owl](/DeviceServiceOnt.owl)
-- GraphDB server settings can be changed at [Tools.java](/mgep.ContextAwareAasBpmn/src/main/java/mgep/ContextAwareAasBpmn/Core/Tools.java)
+- GraphDB server settings can be changed at [config.properties](/mgep.ContextAwareAasBpmn.API/src/main/java/config.properties)
 
 ## Compatibility
 - GraphDB
 - Java 8
 
 ## Deployment
-- Generate war file from the API project ``mgep.ContextAwareAasBpmn`` by executing ``mvn install``. The war file will be placed in ``C:\apache-tomcat-8.5.61\webapps\`` by default. You can change this path in the pom.xml file under the xml element ``maven-war-plugin/configuration/outputDirectory``.
+- Generate war file from the API project ``mgep.ContextAwareAasBpmn.API`` by executing ``mvn install``. The war file will be placed in ``C:\apache-tomcat-8.5.61\webapps\`` by default. You can change this path in the pom.xml file under the xml element ``maven-war-plugin/configuration/outputDirectory``.
 - Deploy war file into your prefered java web server.
 
 ## Test
-- A client project is provided including test data ``mgep.DeviceServiceOntClient``. Run this as Java Application to fill some testing data into GraphDB. You can change the data according to your needs by modifying [SynchronizeThisDeviceData.java](/mgep.DeviceServiceOntClient/src/mgep/DeviceServiceOntClient/Main/SynchronizeThisDeviceData.java).
+- A client project is provided including test data ``mgep.DeviceServiceOntClient``. Run this as Java Application to fill some testing data into GraphDB. You can change the data according to your needs by modifying [SynchronizeThisDeviceData.java](/mgep.ContextAwareAasBpmn.DeviceServiceOntClient/src/mgep/ContextAwareAasBpmn/DeviceServiceOntClient/Main/SynchronizeThisDeviceData.java).
 - Once the war file has been deployed, use postman or any similar to consume the REST endpoints.
 - Most of the REST endpoints are to retrieve some data from GraphDB. But ``ValidateContextSelectBestService``: Suggests a better service by evaluating the requested serviceName and the provided Quality of Service (QoS) parameters.
     - Request body:
