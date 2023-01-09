@@ -41,7 +41,7 @@ A context analyzer component for service re-selection based on quality of servic
         "message": "A better service is recomended after evaluation of quality of service parameters",
         "suggestedService": {
             "aasIdentifier": "AssetAdministrationShell---2",
-			"aasIdShort": "AASLegoColorSorter02",
+            "aasIdShort": "AASLegoColorSorter02",
             "url": "http://192.168.56.102:80/robot/throw_piece",
             "method": "POST",
             "name": "ThrowCurrentPiece",
