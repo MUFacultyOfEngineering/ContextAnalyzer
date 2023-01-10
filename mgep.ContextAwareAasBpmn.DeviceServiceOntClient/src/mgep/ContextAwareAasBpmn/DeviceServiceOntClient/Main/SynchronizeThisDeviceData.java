@@ -24,8 +24,31 @@ public class SynchronizeThisDeviceData {
 			String prepareDelete = "delete where {?s ?o ?p};";
 			repManager.executeQuery(Tools.REPOSITORY_ID, prepareDelete);
 			
-			for (int i = 1; i <= 1536; i++) {
-				insertColorSorters(repManager, i, "192.168.56.10" + i);
+			//initial ip
+			int firstSubnet = 192;
+			int secondSubnet = 168;
+			int thirdSubnet = 56;
+			int fourthSubnet = 100;
+			
+			for (int i = 1; i <= 1536; i++) {				
+				if(fourthSubnet > 255) {
+					fourthSubnet = 1;
+					thirdSubnet += 1;
+				}
+				
+				if(thirdSubnet > 255) {
+					thirdSubnet = 1;
+					secondSubnet += 1;
+				}
+				
+				if(secondSubnet > 255) {
+					secondSubnet = 1;
+					firstSubnet += 1;
+				}
+				
+				String ip = String.format("%s.%s.%s.%s", firstSubnet, secondSubnet, thirdSubnet, fourthSubnet);
+				insertColorSorters(repManager, i, ip);				
+				fourthSubnet++;
 			}
 			try {
 				System.out.println("Waiting for next run");
@@ -33,6 +56,7 @@ public class SynchronizeThisDeviceData {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			break;
 		}
 	}
 	

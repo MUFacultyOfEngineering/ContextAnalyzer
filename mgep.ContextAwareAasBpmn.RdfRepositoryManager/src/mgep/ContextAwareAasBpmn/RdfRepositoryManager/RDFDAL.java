@@ -20,16 +20,16 @@ public class RDFDAL {
 	private ServiceDTO mapServiceModelObjToDTO(BindingSet modelObj) {
 		if(modelObj == null) return null;
 		
-		String aasId = modelObj.getBinding("aasIdentifier").getValue().stringValue();
-		String aasIdShort = modelObj.getBinding("aasIdShort").getValue().stringValue();
-		String servName = modelObj.getBinding("serviceName").getValue().stringValue();
-		String serviceIdentifier = modelObj.getBinding("serviceIdentifier").getValue().stringValue();
-		String serviceUrl = modelObj.getBinding("serviceUrl").getValue().stringValue();
-		String serviceMethod = modelObj.getBinding("serviceMethod").getValue().stringValue();
-		String serviceDescription = modelObj.getBinding("serviceDescription").getValue().stringValue();
-		boolean serviceIsAsync = Boolean.parseBoolean(modelObj.getBinding("serviceIsAsync").getValue().stringValue());
+		var aasId = modelObj.getBinding("aasIdentifier").getValue().stringValue();
+		var aasIdShort = modelObj.getBinding("aasIdShort").getValue().stringValue();
+		var servName = modelObj.getBinding("serviceName").getValue().stringValue();
+		var serviceIdentifier = modelObj.getBinding("serviceIdentifier").getValue().stringValue();
+		var serviceUrl = modelObj.getBinding("serviceUrl").getValue().stringValue();
+		var serviceMethod = modelObj.getBinding("serviceMethod").getValue().stringValue();
+		var serviceDescription = modelObj.getBinding("serviceDescription").getValue().stringValue();
+		var serviceIsAsync = Boolean.parseBoolean(modelObj.getBinding("serviceIsAsync").getValue().stringValue());
 		
-		ServiceDTO serviceObj = new ServiceDTO();
+		var serviceObj = new ServiceDTO();
 		serviceObj.setAasIdShort(aasIdShort);
 		serviceObj.setAasIdentifier(aasId);
 		serviceObj.setServiceIdentifier(serviceIdentifier);
@@ -45,11 +45,11 @@ public class RDFDAL {
 	private AssetAdministrationShellDTO mapAdminShellModelObjToDTO(BindingSet modelObj) {
 		if(modelObj == null) return null;
 		
-		String aasIdentifier = modelObj.getBinding("aasIdentifier").getValue().stringValue();
-		String aasIdShort = modelObj.getBinding("aasIdShort").getValue().stringValue();
-		String aasName = modelObj.getBinding("aasName").getValue().stringValue();
+		var aasIdentifier = modelObj.getBinding("aasIdentifier").getValue().stringValue();
+		var aasIdShort = modelObj.getBinding("aasIdShort").getValue().stringValue();
+		var aasName = modelObj.getBinding("aasName").getValue().stringValue();
 		
-		AssetAdministrationShellDTO shellObj = new AssetAdministrationShellDTO();
+		var shellObj = new AssetAdministrationShellDTO();
 		shellObj.setAasIdentifier(aasIdentifier);
 		shellObj.setAasIdShort(aasIdShort);
 		shellObj.setAasName(aasName);
@@ -60,10 +60,10 @@ public class RDFDAL {
 	
 	public ServiceDTO GetServiceByServiceId(String serviceId) {
 		log.info("Enter GetServiceByAasId");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -83,7 +83,7 @@ public class RDFDAL {
 		//execute select and map object
 		ServiceDTO serviceObj = null;
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);
 			if(bindingSet.isEmpty()) return null;
 			
 			serviceObj = mapServiceModelObjToDTO(bindingSet.get(0));
@@ -102,10 +102,10 @@ public class RDFDAL {
 	
 	public ServiceDTO GetServiceByName(String aasIdentifier, String serviceName) {
 		log.info("Enter GetServiceByAasId");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -126,7 +126,7 @@ public class RDFDAL {
 		//execute select and map object
 		ServiceDTO serviceObj = null;
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);
 			if(bindingSet.isEmpty()) return null;
 			
 			serviceObj = mapServiceModelObjToDTO(bindingSet.get(0));
@@ -145,10 +145,10 @@ public class RDFDAL {
 	
 	public AssetAdministrationShellDTO GetShellByServiceId(String serviceId) {
 		log.info("Enter GetShellByServiceId");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -167,7 +167,7 @@ public class RDFDAL {
 		//execute select and map object
 		AssetAdministrationShellDTO aasShellObj = null;
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);
 			if(bindingSet.isEmpty()) return null;
 			
 			return mapAdminShellModelObjToDTO(bindingSet.get(0));
@@ -182,10 +182,10 @@ public class RDFDAL {
 
 	public List<ServiceDTO> GetServicesByAasId(String aasIdentifier) {
 		log.info("Enter GetServicesByAasId");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -203,11 +203,11 @@ public class RDFDAL {
 				+ "} limit 100";
 		
 		//execute select and map object
-		List<ServiceDTO> lServices = new ArrayList<ServiceDTO>();
+		var lServices = new ArrayList<ServiceDTO>();
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
-			for (BindingSet item : bindingSet) {
-				ServiceDTO serviceObj = mapServiceModelObjToDTO(item);
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
+			for (var item : bindingSet) {
+				var serviceObj = mapServiceModelObjToDTO(item);
 						
 				//set input, output and quality parameters
 				serviceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(serviceObj.getServiceIdentifier()));
@@ -225,10 +225,10 @@ public class RDFDAL {
 	
 	public List<ServiceDTO> GetServicesByDescription(String description) {
 		log.info("Enter GetServicesByDescription");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -246,11 +246,11 @@ public class RDFDAL {
 				+ "} limit 100";
 		
 		//execute select and map object
-		List<ServiceDTO> lServices = new ArrayList<ServiceDTO>();
+		var lServices = new ArrayList<ServiceDTO>();
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
-			for (BindingSet item : bindingSet) {
-				ServiceDTO serviceObj = mapServiceModelObjToDTO(item);
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
+			for (var item : bindingSet) {
+				var serviceObj = mapServiceModelObjToDTO(item);
 				
 				//set input, output and quality parameters
 				serviceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(serviceObj.getServiceIdentifier()));
@@ -268,10 +268,10 @@ public class RDFDAL {
 	
 	public List<ServiceDTO> GetServicesByParamName(String inputParamName, String outputParamName) {
 		log.info("Enter GetServicesByParamName");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -298,11 +298,11 @@ public class RDFDAL {
 				+ "} limit 100";
 		
 		//execute select and map object
-		List<ServiceDTO> lServices = new ArrayList<ServiceDTO>();
+		var lServices = new ArrayList<ServiceDTO>();
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
-			for (BindingSet item : bindingSet) {
-				ServiceDTO serviceObj = mapServiceModelObjToDTO(item);
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
+			for (var item : bindingSet) {
+				var serviceObj = mapServiceModelObjToDTO(item);
 				
 				//set input, output and quality parameters
 				serviceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(serviceObj.getServiceIdentifier()));
@@ -321,10 +321,10 @@ public class RDFDAL {
 	
 	public List<ParameterDTO> GetServiceInputParametersByServiceId(String serviceId) {
 		log.info("Enter GetServiceInputParametersByServiceId");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "	   ?service dsOnt:serviceIdentifier ?serviceIdentifier .\r\n"
@@ -336,15 +336,15 @@ public class RDFDAL {
 				+ "} limit 100";
 		
 		//execute select and map object
-		List<ParameterDTO> lInputParams = new ArrayList<ParameterDTO>();
+		var lInputParams = new ArrayList<ParameterDTO>();
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
-			for (BindingSet item : bindingSet) {
-				String serviceInputParameterName = item.getBinding("serviceInputParameterName").getValue().stringValue();
-				String serviceInputParameterType = item.getBinding("serviceInputParameterType").getValue().stringValue();
-				String serviceInputParameterValue = item.getBinding("serviceInputParameterValue").getValue().stringValue();
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
+			for (var item : bindingSet) {
+				var serviceInputParameterName = item.getBinding("serviceInputParameterName").getValue().stringValue();
+				var serviceInputParameterType = item.getBinding("serviceInputParameterType").getValue().stringValue();
+				var serviceInputParameterValue = item.getBinding("serviceInputParameterValue").getValue().stringValue();
 				
-				ParameterDTO inputParamObj = new ParameterDTO();
+				var inputParamObj = new ParameterDTO();
 				inputParamObj.setParameterName(serviceInputParameterName);
 				inputParamObj.setParameterType(serviceInputParameterType);
 				inputParamObj.setParameterValue(serviceInputParameterValue);
@@ -361,10 +361,10 @@ public class RDFDAL {
 	
 	public List<ParameterDTO> GetServiceOutputParametersByServiceId(String serviceId) {
 		log.info("Enter GetServiceInputParametersByServiceId");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "	   ?service dsOnt:serviceIdentifier ?serviceIdentifier .\r\n"
@@ -376,15 +376,15 @@ public class RDFDAL {
 				+ "} limit 100";
 		
 		//execute select and map object
-		List<ParameterDTO> lOutputParams = new ArrayList<ParameterDTO>();
+		var lOutputParams = new ArrayList<ParameterDTO>();
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
-			for (BindingSet item : bindingSet) {
-				String serviceOutputParameterName = item.getBinding("serviceOutputParameterName").getValue().stringValue();
-				String serviceOutputParameterType = item.getBinding("serviceOutputParameterType").getValue().stringValue();
-				String serviceOutputParameterValue = item.getBinding("serviceOutputParameterValue").getValue().stringValue();
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
+			for (var item : bindingSet) {
+				var serviceOutputParameterName = item.getBinding("serviceOutputParameterName").getValue().stringValue();
+				var serviceOutputParameterType = item.getBinding("serviceOutputParameterType").getValue().stringValue();
+				var serviceOutputParameterValue = item.getBinding("serviceOutputParameterValue").getValue().stringValue();
 				
-				ParameterDTO outputParamObj = new ParameterDTO();
+				var outputParamObj = new ParameterDTO();
 				outputParamObj.setParameterName(serviceOutputParameterName);
 				outputParamObj.setParameterType(serviceOutputParameterType);
 				outputParamObj.setParameterValue(serviceOutputParameterValue);
@@ -401,10 +401,10 @@ public class RDFDAL {
 	
 	public List<QualityParameterDTO> GetServiceQualityParametersByServiceId(String serviceId) {
 		log.info("Enter GetServiceInputParametersByServiceId");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "	   ?service dsOnt:serviceIdentifier ?serviceIdentifier .\r\n"
@@ -418,11 +418,11 @@ public class RDFDAL {
 				+ "} limit 100";
 		
 		//execute select and map object
-		List<QualityParameterDTO> lQualityParams = new ArrayList<QualityParameterDTO>();
+		var lQualityParams = new ArrayList<QualityParameterDTO>();
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
-			for (BindingSet item : bindingSet) {
-				QualityParameterDTO qosObj = new QualityParameterDTO();
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
+			for (var item : bindingSet) {
+				var qosObj = new QualityParameterDTO();
 				qosObj.setParameterName(item.getBinding("qualityParameterName").getValue().stringValue());
 				qosObj.setParameterValue(item.getBinding("qualityParameterValue").getValue().stringValue());
 				qosObj.setParameterType(item.getBinding("qualityParameterType").getValue().stringValue());
@@ -440,10 +440,10 @@ public class RDFDAL {
 	
 	public List<AssetAdministrationShellDTO> GetShells(String aasIdentifier) {
 		log.info("Enter GetShells");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//prepare select
-		String query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var query = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -454,10 +454,10 @@ public class RDFDAL {
 				+ "} limit 100";
 		
 		//execute select and map object
-		List<AssetAdministrationShellDTO> lShells = new ArrayList<AssetAdministrationShellDTO>();
+		var lShells = new ArrayList<AssetAdministrationShellDTO>();
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
-			for (BindingSet item : bindingSet) {
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, query);			
+			for (var item : bindingSet) {
 				lShells.add(mapAdminShellModelObjToDTO(item));
 			}
 		} catch (Exception e) {
@@ -470,11 +470,11 @@ public class RDFDAL {
 	
 	public ResponseContextValServiceSelectionDTO ValidateContextSelectBestService(RequestContextValServiceSelectionDTO requestObj) {
 		log.info("Enter ValidateContextSelectBestService");		
-		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 
 		//prepare select requested service
 		ServiceDTO requestedServiceObj = null;
-		String queryRequestedService = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var queryRequestedService = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -494,9 +494,9 @@ public class RDFDAL {
 		
 		//execute select and map object
 		try {
-			List<BindingSet> bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, queryRequestedService);
+			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, queryRequestedService);
 			if(bindingSet.isEmpty()) {
-				ResponseContextValServiceSelectionDTO contextValidationResult = new ResponseContextValServiceSelectionDTO(false, "The requested service does not match to our records. Please check you have provided the right information.");
+				var contextValidationResult = new ResponseContextValServiceSelectionDTO(false, "The requested service does not match to our records. Please check you have provided the right information.");
 				return contextValidationResult;
 			}
 			
@@ -511,25 +511,52 @@ public class RDFDAL {
 		}
 		
 		//prepare quality validation
-		String queryQualitySelector = "";
-		String queryQualityFilter = "";
+		var queryQualitySelector = "";
+		var queryQualityFilter = "";
+		var queryQualityOrderBy = "";
 		if(requestObj.getQualityParameters() != null && requestObj.getQualityParameters().size() > 0) {			
-			for (QualityParameterDTO qItem : requestObj.getQualityParameters()) {
-				String hasQualitySelectorVarName = "quality" + qItem.getParameterName();
-				String qualityParameterValueVarName = "qualityParameterValue" + qItem.getParameterName();
-				String qualityParameterDataType = requestedServiceObj.getServiceQualityParameters().stream().filter(x-> x.getParameterName().equals(qItem.getParameterName())).findAny().get().getParameterType().toLowerCase();
-				String qualityEvalRightSide = qItem.getQualityParameterEvaluationExpression().replace(qItem.getParameterName(), "");
-				String evalExpression = String.format("xsd:%s(?%s) %s", qualityParameterDataType, qualityParameterValueVarName, qualityEvalRightSide);
+			for (var qItem : requestObj.getQualityParameters()) {
+				var hasQualitySelectorVarName = "quality" + qItem.getParameterName();
+				var qualityParameterValueVarName = "qualityParameterValue" + qItem.getParameterName();
+				var qualityParameterDataType = requestedServiceObj.getServiceQualityParameters().stream().filter(x-> x.getParameterName().equals(qItem.getParameterName())).findAny().get().getParameterType().toLowerCase();
+				var qualityEvalRightSide = qItem.getQualityParameterEvaluationExpression().replace(qItem.getParameterName(), "");
+				var evalExpression = String.format("xsd:%s(?%s) %s", qualityParameterDataType, qualityParameterValueVarName, qualityEvalRightSide);
 				queryQualitySelector += "    ?service dsOnt:hasQuality ?" + hasQualitySelectorVarName + " .\r\n"
 						+ "    ?" + hasQualitySelectorVarName + " dsOnt:parameterName \"" + qItem.getParameterName() + "\" .\r\n"
 						+ "    ?" + hasQualitySelectorVarName + " dsOnt:parameterValue ?" + qualityParameterValueVarName + " .\r\n";
 				queryQualityFilter += "    filter (" + evalExpression + ") .\r\n";
+
+				//prepare order by based on comparison symbol				
+				var comparisonSymbol = qualityEvalRightSide.trim().split(" ")[0];
+				switch (comparisonSymbol) {
+					case "<": case "<=":
+						//<: means the lesser the value, the better. "ORDER BY ASC" puts the lessest value on top of the resultset						
+						if(queryQualityOrderBy.length() == 0) {
+							queryQualityOrderBy = String.format("ORDER BY ASC(xsd:%s(?%s))", qualityParameterDataType, qualityParameterValueVarName);							
+						}else if (queryQualityOrderBy.contains("ORDER BY")) {
+							//append new parameter
+							queryQualityOrderBy += String.format(" ASC(xsd:%s(?%s))", qualityParameterDataType, qualityParameterValueVarName);
+						}
+						break;
+					case ">": case ">=":
+						//>: means the greater the value, the better. "ORDER BY DESC" puts the greatest value on top of the resultset					
+						if(queryQualityOrderBy.length() == 0) {
+							queryQualityOrderBy = String.format("ORDER BY DESC(xsd:%s(?%s))", qualityParameterDataType, qualityParameterValueVarName);							
+						}else if (queryQualityOrderBy.contains("ORDER BY")) {
+							//append new parameter
+							queryQualityOrderBy += String.format(" DESC(xsd:%s(?%s))", qualityParameterDataType, qualityParameterValueVarName);
+						}
+						break;
+					default:
+						//other dont need order by
+						break;
+				}
 			}
 		}
 		
 		//prepare select for suggested service according to evaluation of QoS
 		ServiceDTO suggestedServiceObj = null;
-		String querySuggestedService = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var querySuggestedService = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -546,14 +573,16 @@ public class RDFDAL {
 				+ queryQualitySelector
 				+ queryQualityFilter
 				+ "    filter (?serviceName = \"" + requestedServiceObj.getServiceName() + "\") .\r\n"
-				+ "} limit 100";
+				+ "} "
+				+ queryQualityOrderBy
+				+ "    limit 10";
 		
 		//execute select and map object
 		try {
-			List<BindingSet> lBindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, querySuggestedService);
+			var lBindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, querySuggestedService);
 			if(!lBindingSet.isEmpty()) {
-				for (BindingSet item : lBindingSet) {
-					String serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();					
+				for (var item : lBindingSet) {
+					var serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();					
 					//if is the same as the one requested, do nothing and seek for the next one
 					if(serviceIdentifier.equals(requestedServiceObj.getServiceIdentifier())) continue;
 					//set suggestedService and  break loop
@@ -568,7 +597,7 @@ public class RDFDAL {
 		}
 		
 		//prepare response
-		ResponseContextValServiceSelectionDTO contextValidationResult = new ResponseContextValServiceSelectionDTO(true, "OK");
+		var contextValidationResult = new ResponseContextValServiceSelectionDTO(true, "OK");
 		
 		//if suggestedService is found: set input, output and quality parameters
 		if(suggestedServiceObj != null) {

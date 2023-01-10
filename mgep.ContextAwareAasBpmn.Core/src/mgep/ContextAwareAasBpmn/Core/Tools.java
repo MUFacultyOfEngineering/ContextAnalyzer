@@ -21,6 +21,10 @@ public final class Tools {
 	    return (int) ((Math.random() * (max - min)) + min);
 	}
 	
+	/**
+	 * Loads configuration variables about graphdb repository from a config file
+	 * @param filePath
+	 */
 	public static void LoadEnvironmentFromPropertiesFile(String filePath) {
 		var prop = new Properties();
 	    InputStream input = null;
