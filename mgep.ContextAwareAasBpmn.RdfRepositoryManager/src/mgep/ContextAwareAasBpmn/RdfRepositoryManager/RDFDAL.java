@@ -22,6 +22,7 @@ public class RDFDAL {
 		
 		var aasId = modelObj.getBinding("aasIdentifier").getValue().stringValue();
 		var aasIdShort = modelObj.getBinding("aasIdShort").getValue().stringValue();
+		var deviceName = modelObj.getBinding("deviceName").getValue().stringValue();
 		var servName = modelObj.getBinding("serviceName").getValue().stringValue();
 		var serviceIdentifier = modelObj.getBinding("serviceIdentifier").getValue().stringValue();
 		var serviceUrl = modelObj.getBinding("serviceUrl").getValue().stringValue();
@@ -32,6 +33,7 @@ public class RDFDAL {
 		var serviceObj = new ServiceDTO();
 		serviceObj.setAasIdShort(aasIdShort);
 		serviceObj.setAasIdentifier(aasId);
+		serviceObj.setDeviceName(deviceName);
 		serviceObj.setServiceIdentifier(serviceIdentifier);
 		serviceObj.setServiceUrl(serviceUrl);
 		serviceObj.setServiceMethod(serviceMethod);
@@ -611,5 +613,176 @@ public class RDFDAL {
 		}
 		
 		return contextValidationResult;
+	}
+	
+	public Boolean UpdateQualityParamtersOfAService(String serviceIdentifier, List<QualityParameterDTO> newQualityParameters) {
+		log.info("Enter UpdateQualityParamtersOfAService");		
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		
+		String deleteQualityQuery = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\n"
+				+ "PREFIX dsOnt: <https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#>\r\n"
+				+ "delete {\r\n"
+				+ "	?quality dsOnt:parameterName ?qualityParameterName .\r\n"
+				+ "    ?quality dsOnt:parameterType ?qualityParameterType .\r\n"
+				+ "    ?quality dsOnt:parameterValue ?qualityParameterValue .\r\n"
+				+ "    ?quality dsOnt:qualityParameterCorrespondsTo ?qualityParameterCorrespondsTo .\r\n"
+				+ "    ?quality dsOnt:qualityParameterEvaluationExpression ?qualityParameterEvaluationExpression .\r\n"
+				+ "} where {\r\n"
+				+ "	?service dsOnt:serviceIdentifier ?serviceIdentifier .\r\n"
+				+ "    ?service dsOnt:hasQuality ?quality .\r\n"
+				+ "    ?quality dsOnt:parameterName ?qualityParameterName .\r\n"
+				+ "    ?quality dsOnt:parameterType ?qualityParameterType .\r\n"
+				+ "    ?quality dsOnt:parameterValue ?qualityParameterValue .\r\n"
+				+ "    ?quality dsOnt:qualityParameterCorrespondsTo ?qualityParameterCorrespondsTo .\r\n"
+				+ "    ?quality dsOnt:qualityParameterEvaluationExpression ?qualityParameterEvaluationExpression .\r\n"
+				+ "    filter (?serviceIdentifier = \"" + serviceIdentifier + "\") .\r\n"
+				+ "}";
+		
+		//execute delete
+		if (!repManager.executeQuery(Tools.REPOSITORY_ID, deleteQualityQuery)) return false;
+		
+		//prepare data for insert
+		ServiceDTO service = GetServiceByServiceId(serviceIdentifier);
+		String fullServiceName = String.format("%s_%s", service.getDeviceName(), service.getServiceName());
+		service.setServiceQualityParameters(newQualityParameters);
+		
+		//execute insert
+		String insertQueryQualityParams = "PREFIX rdf: <" + Tools.RDF_IRI + ">"
+				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI+ ">"
+				+ "INSERT DATA {"
+				+  prepareInsertQualityParamQuery(service, fullServiceName)
+				+ "};";
+		return repManager.executeQuery(Tools.REPOSITORY_ID, insertQueryQualityParams);
+	}
+	
+	public String prepareInsertDeviceQuery(DeviceDTO deviceObj) {
+		String insertQueryDevice = "PREFIX rdf: <" + Tools.RDF_IRI + ">"
+				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">"
+				+ "INSERT DATA {"
+				+ "    dsOnt:" + deviceObj.getDeviceName() + " rdf:type dsOnt:Device ."
+				+ "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:aasIdentifier \"" + deviceObj.getAasIdentifier() + "\" ."
+				+ "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:aasIdShort \"" + deviceObj.getAasIdShort() + "\" ."
+				+ "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:aasName \"" + deviceObj.getAasName() + "\" ."
+				+ (deviceObj.getDeviceApiDocumentation() == null ? "" : "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:deviceApiDocumentation \"" + deviceObj.getDeviceApiDocumentation() + "\" .")
+				+ (deviceObj.getDeviceDescription() == null ? "" : "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:deviceDescription \"" + deviceObj.getDeviceDescription() + "\" .")
+				+ "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:deviceIdentifier \"" + deviceObj.getDeviceIdentifier() + "\" ."
+				+ "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:deviceIPAddress \"" + deviceObj.getDeviceIPAddress() + "\" ."
+				+ "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:deviceIsOnline \"" + deviceObj.getDeviceIsOnline() + "\" ."
+				+ "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:deviceName \"" + deviceObj.getDeviceName() + "\" ."
+				+ (deviceObj.getDeviceNetworkLatency() == null ? "" : "    dsOnt:" + deviceObj.getDeviceName() + " dsOnt:deviceNetworkLatency \"" + deviceObj.getDeviceNetworkLatency() + "\" .")
+				+ "};";
+		
+		String insertSensorQuery = "";		
+		if(deviceObj.getSensors() != null && deviceObj.getSensors().size() > 0) {
+			for (SensorDTO item : deviceObj.getSensors()) {
+				insertSensorQuery += prepareInsertSensorQuery(deviceObj.getDeviceName(), item);
+			}			
+		}
+		
+		String insertQueryServices = "";
+		for (ServiceDTO item : deviceObj.getServices()) {
+			insertQueryServices += prepareInsertServiceQuery(deviceObj.getDeviceName(), item); 
+		}
+		
+		return insertQueryDevice + insertSensorQuery + insertQueryServices;
+	}
+	
+	private String prepareInsertSensorQuery(String deviceName, SensorDTO sensorObj) {		
+		String fullSensorName = String.format("%s_%s", deviceName, sensorObj.getSensorName());
+		
+		String insertQuery = "PREFIX rdf: <" + Tools.RDF_IRI + ">"
+				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI+ ">"
+				+ "INSERT DATA {"
+				+ "    dsOnt:" + fullSensorName + " rdf:type dsOnt:Sensor ."
+				+ "    dsOnt:" + fullSensorName + " dsOnt:sensorDescription \"" + sensorObj.getSensorDescription() + "\" ."
+				+ "    dsOnt:" + fullSensorName + " dsOnt:sensorIdentifier \"" + sensorObj.getSensorIdentifier() + "\" ."
+				+ "    dsOnt:" + fullSensorName + " dsOnt:sensorName \"" + sensorObj.getSensorName() + "\" ."
+				+ "    dsOnt:" + fullSensorName + " dsOnt:sensorType dsOnt:" + sensorObj.getSensorType().name() + " ."
+				+ "    dsOnt:" + fullSensorName + " dsOnt:sensorValueDataType \"" + sensorObj.getSensorValueDataType() + "\" ."
+				+ "    dsOnt:" + fullSensorName + " dsOnt:sensorValueDataValue \"" + sensorObj.getSensorValueDataValue() + "\" ."
+				+ "    dsOnt:" + fullSensorName + " dsOnt:sensorValueUnit \"" + sensorObj.getSensorValueDataUnit() + "\" ."
+				+ "    dsOnt:" + deviceName + " dsOnt:hasSensor dsOnt:" + fullSensorName
+				+ "};";
+		return insertQuery;
+	}
+	
+	private String prepareInsertServiceQuery(String deviceName, ServiceDTO service) {		
+		String fullServiceName = String.format("%s_%s", deviceName, service.getServiceName());				
+		String insertQueryInputParams = prepareInsertInputParamQuery(service, fullServiceName);
+		String insertQueryOutputParams = prepareInsertOutputParamQuery(service, fullServiceName);		
+		String insertQueryQualityParams = prepareInsertQualityParamQuery(service, fullServiceName);
+		
+		String insertServiceQuery="PREFIX rdf: <" + Tools.RDF_IRI + ">"
+				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI+ ">"
+				+ "INSERT DATA {"
+				+ "    dsOnt:" + fullServiceName + " rdf:type dsOnt:Service ."
+				+ "    dsOnt:" + fullServiceName + " dsOnt:serviceDescription \"" + service.getServiceDescription() + "\" ."
+				+ "    dsOnt:" + fullServiceName + " dsOnt:serviceIdentifier \"" + service.getServiceIdentifier() + "\" ."
+				+ "    dsOnt:" + fullServiceName + " dsOnt:serviceIsAsync \"" + service.isServiceIsAsync() + "\" ."
+				+ "    dsOnt:" + fullServiceName + " dsOnt:serviceMethod \"" + service.getServiceMethod() + "\" ."
+				+ "    dsOnt:" + fullServiceName + " dsOnt:serviceName \"" + service.getServiceName() + "\" ."
+				+ "    dsOnt:" + fullServiceName + " dsOnt:serviceURL \"" + service.getServiceUrl() + "\" ."
+				+ insertQueryInputParams
+				+ insertQueryOutputParams
+				+ insertQueryQualityParams
+				+ "    dsOnt:" + deviceName + " dsOnt:hasService dsOnt:" + fullServiceName
+				+ "};";
+		return insertServiceQuery;
+	}
+	
+	private String prepareInsertInputParamQuery(ServiceDTO service, String fullServiceName) {
+		String insertQueryInputParams = "";
+		
+		if (service.getServiceInputParameters() != null && service.getServiceInputParameters().size() > 0) {
+			for (ParameterDTO item : service.getServiceInputParameters()) {
+				String paramName =  String.format("%s_Input_%s", fullServiceName, item.getParameterName());
+				insertQueryInputParams += "    dsOnt:" + paramName + " rdf:type dsOnt:Input ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterName \"" + item.getParameterName() + "\" ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterType \"" + item.getParameterType() + "\" ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterValue \"" + item.getParameterValue() + "\" ."
+						+ "    dsOnt:" + fullServiceName + " dsOnt:hasInput dsOnt:" + paramName
+						+ " .";
+			}			
+		}
+		
+		return insertQueryInputParams;
+	}
+	
+	private String prepareInsertOutputParamQuery(ServiceDTO service, String fullServiceName) {
+		String insertQueryOutputParams = "";
+		
+		if (service.getServiceOutputParameters() != null && service.getServiceOutputParameters().size() > 0) {
+			for (ParameterDTO item : service.getServiceOutputParameters()) {
+				String paramName =  String.format("%s_Output_%s", fullServiceName, item.getParameterName());
+				insertQueryOutputParams += "    dsOnt:" + paramName + " rdf:type dsOnt:Output ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterName \"" + item.getParameterName() + "\" ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterType \"" + item.getParameterType() + "\" ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterValue \"" + item.getParameterValue() + "\" ."
+						+ "    dsOnt:" + fullServiceName + " dsOnt:hasOutput dsOnt:" + paramName
+						+ " .";
+			}
+		}
+		
+		return insertQueryOutputParams;
+	}
+	
+	private String prepareInsertQualityParamQuery(ServiceDTO service, String fullServiceName) {
+		String insertQueryQualityParams = "";
+		
+		if (service.getServiceQualityParameters() != null && service.getServiceQualityParameters().size() > 0) {
+			for (QualityParameterDTO item : service.getServiceQualityParameters()) {
+				String paramName =  String.format("%s_Quality_%s", fullServiceName, item.getParameterName());
+				insertQueryQualityParams += "    dsOnt:" + paramName + " rdf:type dsOnt:Quality ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterName \"" + item.getParameterName() + "\" ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterType \"" + item.getParameterType() + "\" ."
+						+ "    dsOnt:" + paramName + " dsOnt:parameterValue \"" + item.getParameterValue() + "\" ."
+						+ "    dsOnt:" + paramName + " dsOnt:qualityParameterCorrespondsTo \"" + item.getQualityParameterCorrespondsTo() + "\" ."
+						+ "    dsOnt:" + paramName + " dsOnt:qualityParameterEvaluationExpression \"" + item.getQualityParameterEvaluationExpression() + "\" ."
+						+ "    dsOnt:" + fullServiceName + " dsOnt:hasQuality dsOnt:" + paramName
+						+ " .";
+			}			
+		}
+		
+		return insertQueryQualityParams;
 	}
 }

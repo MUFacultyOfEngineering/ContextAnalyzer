@@ -8,6 +8,7 @@ public class ServiceDTO implements Serializable {
 
 	private String aasIdentifier;
 	private String aasIdShort;
+	private String deviceName;
 	private String serviceDescription;
 	private String serviceIdentifier;
 	private boolean serviceIsAsync;
@@ -138,6 +139,14 @@ public class ServiceDTO implements Serializable {
 
 	public void setAasIdShort(String aasIdShort) {
 		this.aasIdShort = aasIdShort;
+	}
+
+	public String getDeviceName() {
+		return deviceName;
+	}
+
+	public void setDeviceName(String deviceName) {
+		this.deviceName = deviceName;
 	}
 	
 }

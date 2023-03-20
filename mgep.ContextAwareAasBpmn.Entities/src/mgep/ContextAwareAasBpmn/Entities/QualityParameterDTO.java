@@ -2,7 +2,7 @@ package mgep.ContextAwareAasBpmn.Entities;
 
 import java.io.Serializable;
 
-public class QualityParameterDTO extends ParameterDTO implements Serializable {
+public class QualityParameterDTO extends InterfaceConnectionSheetDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String qualityParameterCorrespondsTo;
