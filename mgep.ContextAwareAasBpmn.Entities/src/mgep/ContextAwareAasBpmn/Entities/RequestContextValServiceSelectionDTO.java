@@ -8,7 +8,7 @@ public class RequestContextValServiceSelectionDTO implements Serializable {
 
 	private String aasIdShort;
 	private String serviceName;
-	private List<QualityParameterDTO> qualityParameters;
+	private List<QualityParameterDTO> qualityConditions;
 	
 	public RequestContextValServiceSelectionDTO() {
 		super();
@@ -20,11 +20,11 @@ public class RequestContextValServiceSelectionDTO implements Serializable {
 		this.serviceName = serviceName;
 	}
 	
-	public RequestContextValServiceSelectionDTO(String aasIdShort, String serviceName, List<QualityParameterDTO> qualityParameters) {
+	public RequestContextValServiceSelectionDTO(String aasIdShort, String serviceName, List<QualityParameterDTO> qualityConditions) {
 		super();
 		this.aasIdShort = aasIdShort;
 		this.serviceName = serviceName;
-		this.qualityParameters = qualityParameters;
+		this.qualityConditions = qualityConditions;
 	}
 	
 	public String getServiceName() {
@@ -33,11 +33,11 @@ public class RequestContextValServiceSelectionDTO implements Serializable {
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
 	}
-	public List<QualityParameterDTO> getQualityParameters() {
-		return qualityParameters;
+	public List<QualityParameterDTO> getQualityConditions() {
+		return qualityConditions;
 	}
-	public void setQualityParameters(List<QualityParameterDTO> qualityParameters) {
-		this.qualityParameters = qualityParameters;
+	public void setQualityParameters(List<QualityParameterDTO> qualityConditions) {
+		this.qualityConditions = qualityConditions;
 	}
 	public String getAasIdShort() {
 		return aasIdShort;

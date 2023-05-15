@@ -3,6 +3,7 @@
 	<name>mgep.ContextAwareAasBpmn.MAPEK.Monitor</name>
 	<comment></comment>
 	<projects>
+		<project>jrosbridge</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

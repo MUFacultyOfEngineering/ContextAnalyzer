@@ -19,5 +19,22 @@
 	<classpathentry kind="src" path="/mgep.ContextAwareAasBpmn.Entities"/>
 	<classpathentry kind="src" path="/mgep.ContextAwareAasBpmn.Core"/>
 	<classpathentry kind="src" path="/mgep.ContextAwareAasBpmn.RdfRepositoryManager"/>
+	<classpathentry kind="src" path="/jrosbridge"/>
+	<classpathentry kind="src" path="target/generated-sources/annotations">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

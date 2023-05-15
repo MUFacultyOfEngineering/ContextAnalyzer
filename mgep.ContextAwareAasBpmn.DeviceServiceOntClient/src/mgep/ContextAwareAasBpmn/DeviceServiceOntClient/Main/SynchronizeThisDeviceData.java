@@ -18,6 +18,8 @@ public class SynchronizeThisDeviceData {
 		
 		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		RDFDAL rdfDal = new RDFDAL();
+		
+		int blockSize = 200;
 
 		while(true) {
 			//delete all
@@ -28,35 +30,48 @@ public class SynchronizeThisDeviceData {
 			//initial ip
 			int firstSubnet = 192;
 			int secondSubnet = 168;
-			int thirdSubnet = 56;
-			int fourthSubnet = 100;
+			int thirdSubnet = 1;
+			int fourthSubnet = 1;
 			String queryInsert = "";
-			int qtyShells = 1536;
+			int qtyShells = 8000;
 			
-			for (int i = 1; i <= qtyShells; i++) {				
-				if(fourthSubnet > 255) {
-					fourthSubnet = 1;
-					thirdSubnet += 1;
+			try {			
+				for (int i = 1; i <= qtyShells; i++) {				
+					if(fourthSubnet > 255) {
+						fourthSubnet = 1;
+						thirdSubnet += 1;
+					}
+					
+					if(thirdSubnet > 255) {
+						thirdSubnet = 1;
+						secondSubnet += 1;
+					}
+					
+					if(secondSubnet > 255) {
+						secondSubnet = 1;
+						firstSubnet += 1;
+					}
+					
+					String ip = String.format("%s.%s.%s.%s", firstSubnet, secondSubnet, thirdSubnet, fourthSubnet);
+					queryInsert += insertColorSorters(rdfDal, i, ip);
+					
+					//if <= blockSize insert all at once
+					//if more than blockSize insert in blocks of blockSize
+					
+					if(qtyShells <= blockSize && i == qtyShells) {
+						boolean resultInsertAllAtOnce = repManager.executeQuery(Tools.REPOSITORY_ID, queryInsert);
+						System.out.println(String.format("Insert result: %s shells: %s of %s", resultInsertAllAtOnce, i, qtyShells));
+						queryInsert = "";
+					} else if(qtyShells > blockSize && i > 1 && (i % blockSize == 0 || i == qtyShells)) {
+						boolean resultInsertAllAtOnce = repManager.executeQuery(Tools.REPOSITORY_ID, queryInsert);
+						//show progress
+						Double progress = i * 100.0 / qtyShells;
+						System.out.println(String.format("Insert result: %s shells: %s of %s Progress: %s%%", resultInsertAllAtOnce, i, qtyShells, Math.round(progress)));
+						queryInsert = "";
+					}
+					
+					fourthSubnet++;
 				}
-				
-				if(thirdSubnet > 255) {
-					thirdSubnet = 1;
-					secondSubnet += 1;
-				}
-				
-				if(secondSubnet > 255) {
-					secondSubnet = 1;
-					firstSubnet += 1;
-				}
-				
-				String ip = String.format("%s.%s.%s.%s", firstSubnet, secondSubnet, thirdSubnet, fourthSubnet);
-				queryInsert += insertColorSorters(rdfDal, repManager, i, ip);		
-				
-				fourthSubnet++;
-			}
-			try {
-				boolean resultInsertAllAtOnce = repManager.executeQuery(Tools.REPOSITORY_ID, queryInsert);
-				System.out.println(String.format("Insert result: %s shells: %s", resultInsertAllAtOnce, qtyShells));
 				
 				System.out.println("Waiting for next run");
 				Thread.sleep(20000);
@@ -67,7 +82,7 @@ public class SynchronizeThisDeviceData {
 		}
 	}
 	
-	private static String insertColorSorters(RDFDAL rdfDal, RDFRepositoryManager repManager, int deviceId, String deviceIpAddress) {
+	private static String insertColorSorters(RDFDAL rdfDal, int deviceId, String deviceIpAddress) {
 		//prepare insert device data
 		DeviceDTO deviceObj = new DeviceDTO();
 		deviceObj.setAasIdentifier("AssetAdministrationShell---" + deviceId);

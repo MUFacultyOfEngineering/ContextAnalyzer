@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.eclipse.rdf4j.query.BindingSet;
+import org.eclipse.rdf4j.query.algebra.Str;
 
 import mgep.ContextAwareAasBpmn.Entities.*;
 import mgep.ContextAwareAasBpmn.Core.*;
@@ -516,23 +517,30 @@ public class RDFDAL {
 		var queryQualitySelector = "";
 		var queryQualityFilter = "";
 		var queryQualityOrderBy = "";
-		if(requestObj.getQualityParameters() != null && requestObj.getQualityParameters().size() > 0) {			
-			for (var qItem : requestObj.getQualityParameters()) {
-				var hasQualitySelectorVarName = "quality" + qItem.getParameterName();
-				var qualityParameterValueVarName = "qualityParameterValue" + qItem.getParameterName();
-				var qualityParameterDataType = requestedServiceObj.getServiceQualityParameters().stream().filter(x-> x.getParameterName().equals(qItem.getParameterName())).findAny().get().getParameterType().toLowerCase();
-				var qualityEvalRightSide = qItem.getQualityParameterEvaluationExpression().replace(qItem.getParameterName(), "");
-				var evalExpression = String.format("xsd:%s(?%s) %s", qualityParameterDataType, qualityParameterValueVarName, qualityEvalRightSide);
+		if(requestObj.getQualityConditions() != null && requestObj.getQualityConditions().size() > 0) {			
+			for (var qItem : requestObj.getQualityConditions()) {
+				//the eval expression sent in the request, should have 3 parts. 1) param name, 2) condition, 3) value 
+				var arInputEvalExpression = qItem.getQualityParameterEvaluationExpression().trim().split(" ");
+				var paramName = arInputEvalExpression[0];
+				var condition = arInputEvalExpression[1];
+				var value = arInputEvalExpression[2];
+				
+				//format semantic variable names for SPARQL
+				var hasQualitySelectorVarName = "quality" + paramName;
+				var qualityParameterValueVarName = "qualityParameterValue" + paramName;
+				var qualityParameterDataType = requestedServiceObj.getServiceQualityParameters().stream().filter(x-> x.getParameterName().equals(paramName)).findAny().get().getParameterType().toLowerCase();
+				
+				//build filter section of SPARQL
+				var evalExpression = String.format("xsd:%s(?%s) %s %s", qualityParameterDataType, qualityParameterValueVarName, condition, value);
 				queryQualitySelector += "    ?service dsOnt:hasQuality ?" + hasQualitySelectorVarName + " .\r\n"
-						+ "    ?" + hasQualitySelectorVarName + " dsOnt:parameterName \"" + qItem.getParameterName() + "\" .\r\n"
+						+ "    ?" + hasQualitySelectorVarName + " dsOnt:parameterName \"" + paramName + "\" .\r\n"
 						+ "    ?" + hasQualitySelectorVarName + " dsOnt:parameterValue ?" + qualityParameterValueVarName + " .\r\n";
 				queryQualityFilter += "    filter (" + evalExpression + ") .\r\n";
 
-				//prepare order by based on comparison symbol				
-				var comparisonSymbol = qualityEvalRightSide.trim().split(" ")[0];
-				switch (comparisonSymbol) {
+				//prepare "order by" based on comparison symbol
+				switch (condition) {
 					case "<": case "<=":
-						//<: means the lesser the value, the better. "ORDER BY ASC" puts the lessest value on top of the resultset						
+						//<: means the lower the value, the better. "ORDER BY ASC" puts the lowest value on top of the resultset						
 						if(queryQualityOrderBy.length() == 0) {
 							queryQualityOrderBy = String.format("ORDER BY ASC(xsd:%s(?%s))", qualityParameterDataType, qualityParameterValueVarName);							
 						}else if (queryQualityOrderBy.contains("ORDER BY")) {
@@ -541,7 +549,7 @@ public class RDFDAL {
 						}
 						break;
 					case ">": case ">=":
-						//>: means the greater the value, the better. "ORDER BY DESC" puts the greatest value on top of the resultset					
+						//>: means the higher the value, the better. "ORDER BY DESC" puts the greatest value on top of the resultset					
 						if(queryQualityOrderBy.length() == 0) {
 							queryQualityOrderBy = String.format("ORDER BY DESC(xsd:%s(?%s))", qualityParameterDataType, qualityParameterValueVarName);							
 						}else if (queryQualityOrderBy.contains("ORDER BY")) {
@@ -558,7 +566,7 @@ public class RDFDAL {
 		
 		//prepare select for suggested service according to evaluation of QoS
 		ServiceDTO suggestedServiceObj = null;
-		var querySuggestedService = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+		var queryWithFilterSuggestedService = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
 				+ "select * where {\r\n"
 				+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
@@ -573,15 +581,15 @@ public class RDFDAL {
 				+ "    ?service dsOnt:serviceIsAsync ?serviceIsAsync .\r\n"
 				+ "    ?service dsOnt:serviceDescription ?serviceDescription .\r\n"
 				+ queryQualitySelector
-				+ queryQualityFilter
 				+ "    filter (?serviceName = \"" + requestedServiceObj.getServiceName() + "\") .\r\n"
+				+ queryQualityFilter
 				+ "} "
 				+ queryQualityOrderBy
 				+ "    limit 10";
 		
 		//execute select and map object
 		try {
-			var lBindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, querySuggestedService);
+			var lBindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, queryWithFilterSuggestedService);
 			if(!lBindingSet.isEmpty()) {
 				for (var item : lBindingSet) {
 					var serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();					
@@ -598,6 +606,48 @@ public class RDFDAL {
 			return null;
 		}
 		
+		//if suggestedService is still empty, means none of the services meet the Quality conditions. In that case, remove the filter and try again
+		if (suggestedServiceObj == null) {
+			var queryWithoutFilterSuggestedService = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+					+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
+					+ "select * where {\r\n"
+					+ "    ?device dsOnt:aasIdentifier ?aasIdentifier .\r\n"
+					+ "    ?device dsOnt:aasIdShort ?aasIdShort .\r\n"
+					+ "    ?device dsOnt:aasName ?aasName .\r\n"
+					+ "    ?device dsOnt:deviceName ?deviceName .\r\n"
+					+ "    ?device dsOnt:hasService ?service .\r\n"
+					+ "	   ?service dsOnt:serviceIdentifier ?serviceIdentifier .\r\n"
+					+ "    ?service dsOnt:serviceName ?serviceName .\r\n"
+					+ "    ?service dsOnt:serviceURL ?serviceUrl .\r\n"
+					+ "    ?service dsOnt:serviceMethod ?serviceMethod .\r\n"
+					+ "    ?service dsOnt:serviceIsAsync ?serviceIsAsync .\r\n"
+					+ "    ?service dsOnt:serviceDescription ?serviceDescription .\r\n"
+					+ queryQualitySelector
+					+ "    filter (?serviceName = \"" + requestedServiceObj.getServiceName() + "\") .\r\n"
+					+ "} "
+					+ queryQualityOrderBy
+					+ "    limit 10";
+			
+			//execute select and map object
+			try {
+				var lBindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, queryWithoutFilterSuggestedService);
+				if(!lBindingSet.isEmpty()) {
+					for (var item : lBindingSet) {
+						var serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();					
+						//if is the same as the one requested, do nothing and seek for the next one
+						if(serviceIdentifier.equals(requestedServiceObj.getServiceIdentifier())) continue;
+						//set suggestedService and  break loop
+						suggestedServiceObj = mapServiceModelObjToDTO(item);
+						break;
+					}
+				}			
+			} catch (Exception e) {
+				log.catching(e);
+				System.out.println(e.getMessage());
+				return null;
+			}
+		}
+		
 		//prepare response
 		var contextValidationResult = new ResponseContextValServiceSelectionDTO(true, "OK");
 		
@@ -608,8 +658,8 @@ public class RDFDAL {
 			suggestedServiceObj.setServiceQualityParameters(GetServiceQualityParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
 			
 			contextValidationResult.setSuggestedService(suggestedServiceObj);
-			contextValidationResult.setMessage("A better service is recomended after evaluation of quality of service parameters");
-			contextValidationResult.setCanExecute(false);				
+			contextValidationResult.setMessage("A better service is recommended after evaluating QoS parameters");
+			contextValidationResult.setCanExecute(false);
 		}
 		
 		return contextValidationResult;
@@ -619,8 +669,8 @@ public class RDFDAL {
 		log.info("Enter UpdateQualityParamtersOfAService");		
 		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
-		String deleteQualityQuery = "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\r\n"
-				+ "PREFIX dsOnt: <https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#>\r\n"
+		String deleteQualityQuery = "PREFIX rdf: <" + Tools.RDF_IRI + ">"
+				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">"
 				+ "delete {\r\n"
 				+ "	?quality dsOnt:parameterName ?qualityParameterName .\r\n"
 				+ "    ?quality dsOnt:parameterType ?qualityParameterType .\r\n"
@@ -652,6 +702,53 @@ public class RDFDAL {
 				+ "INSERT DATA {"
 				+  prepareInsertQualityParamQuery(service, fullServiceName)
 				+ "};";
+		return repManager.executeQuery(Tools.REPOSITORY_ID, insertQueryQualityParams);
+	}
+	
+	public Boolean UpdateQualityParamtersOfAllServicesOfaShell(List<ServiceDTO> lServicesWithNewQualityParameters) {
+		log.info("Enter UpdateQualityParamtersOfAllServicesOfaShell");		
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		
+		//prepare delete
+		var deleteQualityQuery = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n";
+		
+		for (ServiceDTO serviceObj : lServicesWithNewQualityParameters) {			
+			deleteQualityQuery += "delete {\r\n"
+					+ "	?quality dsOnt:parameterName ?qualityParameterName .\r\n"
+					+ "    ?quality dsOnt:parameterType ?qualityParameterType .\r\n"
+					+ "    ?quality dsOnt:parameterValue ?qualityParameterValue .\r\n"
+					+ "    ?quality dsOnt:qualityParameterCorrespondsTo ?qualityParameterCorrespondsTo .\r\n"
+					+ "    ?quality dsOnt:qualityParameterEvaluationExpression ?qualityParameterEvaluationExpression .\r\n"
+					+ "} where {\r\n"
+					+ "	?service dsOnt:serviceIdentifier ?serviceIdentifier .\r\n"
+					+ "    ?service dsOnt:hasQuality ?quality .\r\n"
+					+ "    ?quality dsOnt:parameterName ?qualityParameterName .\r\n"
+					+ "    ?quality dsOnt:parameterType ?qualityParameterType .\r\n"
+					+ "    ?quality dsOnt:parameterValue ?qualityParameterValue .\r\n"
+					+ "    ?quality dsOnt:qualityParameterCorrespondsTo ?qualityParameterCorrespondsTo .\r\n"
+					+ "    ?quality dsOnt:qualityParameterEvaluationExpression ?qualityParameterEvaluationExpression .\r\n"
+					+ "    filter (?serviceIdentifier = \"" + serviceObj.getServiceIdentifier() + "\") .\r\n"
+					+ "};\r\n";
+			
+		}
+		
+		//execute delete
+		//if (!repManager.executeQuery(Tools.REPOSITORY_ID, deleteQualityQuery)) return false;
+		
+		//prepare data for insert
+		var insertQueryQualityParams = deleteQualityQuery; //"PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
+				//+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n";
+		
+		for (ServiceDTO serviceObj : lServicesWithNewQualityParameters) {
+			String fullServiceName = String.format("%s_%s", serviceObj.getDeviceName(), serviceObj.getServiceName());
+			var insertService = "INSERT DATA {"
+					+  prepareInsertQualityParamQuery(serviceObj, fullServiceName)
+					+ "};\r\n";
+			insertQueryQualityParams += insertService;
+		}
+		
+		//execute insert
 		return repManager.executeQuery(Tools.REPOSITORY_ID, insertQueryQualityParams);
 	}
 	
@@ -773,13 +870,12 @@ public class RDFDAL {
 			for (QualityParameterDTO item : service.getServiceQualityParameters()) {
 				String paramName =  String.format("%s_Quality_%s", fullServiceName, item.getParameterName());
 				insertQueryQualityParams += "    dsOnt:" + paramName + " rdf:type dsOnt:Quality ."
-						+ "    dsOnt:" + paramName + " dsOnt:parameterName \"" + item.getParameterName() + "\" ."
-						+ "    dsOnt:" + paramName + " dsOnt:parameterType \"" + item.getParameterType() + "\" ."
-						+ "    dsOnt:" + paramName + " dsOnt:parameterValue \"" + item.getParameterValue() + "\" ."
-						+ "    dsOnt:" + paramName + " dsOnt:qualityParameterCorrespondsTo \"" + item.getQualityParameterCorrespondsTo() + "\" ."
-						+ "    dsOnt:" + paramName + " dsOnt:qualityParameterEvaluationExpression \"" + item.getQualityParameterEvaluationExpression() + "\" ."
-						+ "    dsOnt:" + fullServiceName + " dsOnt:hasQuality dsOnt:" + paramName
-						+ " .";
+						+ "    dsOnt:" + paramName + " dsOnt:parameterName \"" + item.getParameterName() + "\" .\r\n"
+						+ "    dsOnt:" + paramName + " dsOnt:parameterType \"" + item.getParameterType() + "\" .\r\n"
+						+ "    dsOnt:" + paramName + " dsOnt:parameterValue \"" + item.getParameterValue() + "\" .\r\n"
+						+ "    dsOnt:" + paramName + " dsOnt:qualityParameterCorrespondsTo \"" + item.getQualityParameterCorrespondsTo() + "\" .\r\n"
+						+ "    dsOnt:" + paramName + " dsOnt:qualityParameterEvaluationExpression \"" + item.getQualityParameterEvaluationExpression() + "\" .\r\n"
+						+ "    dsOnt:" + fullServiceName + " dsOnt:hasQuality dsOnt:" + paramName + " .\r\n";
 			}			
 		}
 		

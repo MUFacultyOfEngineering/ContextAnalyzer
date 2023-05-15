@@ -10,16 +10,23 @@ import org.eclipse.milo.opcua.stack.core.types.builtin.DataValue;
 import org.eclipse.milo.opcua.stack.core.types.builtin.NodeId;
 import org.eclipse.milo.opcua.stack.core.types.enumerated.TimestampsToReturn;
 
-public class OpcuaConsumer {	
+public class OpcuaConsumer {
+	private String protocol;
+	private String server;
+	private int port;
 	private String opcuaServerEndpoint;
 	private OpcUaClient client;
 	
-	public OpcuaConsumer(String opcuaServerEndpoint) {
-		this.opcuaServerEndpoint = opcuaServerEndpoint;
+	public OpcuaConsumer(String protocol, String server, int port) {
+		this.protocol = protocol;
+		this.server = server;
+		this.port = port;
 	}
 	
 	private void openConnection() {
 		try {
+			opcuaServerEndpoint = protocol + "://" + server + ":" + port;
+			
 			client = OpcUaClient.create(
 					opcuaServerEndpoint,
 					endpoints ->
