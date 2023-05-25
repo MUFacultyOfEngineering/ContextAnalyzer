@@ -27,6 +27,8 @@ public class ShellAgentUpdater {
 		//read AAS and map values
 		var agentUpdater = new ShellAgentUpdater();
 		var rdfDal = new RDFDAL();
+		String filePath = ShellAgentUpdater.class.getClassLoader().getResource("config.properties").getPath();
+		Tools.LoadEnvironmentFromPropertiesFile(filePath);
 		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//delete all data

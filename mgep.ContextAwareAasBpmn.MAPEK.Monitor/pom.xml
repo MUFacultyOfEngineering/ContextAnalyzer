@@ -3,9 +3,15 @@
   <groupId>mgep.ContextAwareAasBpmn.MAPEK.Monitor</groupId>
   <artifactId>mgep.ContextAwareAasBpmn.MAPEK.Monitor</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
+  <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+    
   <build>
-    <sourceDirectory>src</sourceDirectory>
     <plugins>
+      <!--
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
@@ -13,9 +19,56 @@
           <release>11</release>
         </configuration>
       </plugin>
+      -->
+      <!-- Add the Maven Shade Plugin -->
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.2.4</version>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>shade</goal>
+                  </goals>
+                  <configuration>
+                      <!-- Set the main class -->
+                      <transformers>
+                          <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                              <mainClass>mgep.ContextAwareAasBpmn.MAPEK.Monitor.ShellAgentUpdater</mainClass>
+                          </transformer>
+                      </transformers>
+                  </configuration>
+              </execution>
+          </executions>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
+    <!-- Add the dependency for mgep.ContextAwareAasBpmn -->
+    <dependency>
+		<groupId>mgep.ContextAwareAasBpmn.Entities</groupId>
+		<artifactId>mgep.ContextAwareAasBpmn.Entities</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+	<dependency>
+		<groupId>mgep.ContextAwareAasBpmn.RdfRepositoryManager</groupId>
+		<artifactId>mgep.ContextAwareAasBpmn.RdfRepositoryManager</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+	<dependency>
+		<groupId>mgep.ContextAwareAasBpmn.Core</groupId>
+		<artifactId>mgep.ContextAwareAasBpmn.Core</artifactId>
+		<version>1.0.0</version>
+	</dependency>
+	<dependency>
+		<groupId>edu.wpi.rail</groupId>
+		<artifactId>jrosbridge</artifactId>
+		<version>0.2.3</version>
+		<scope>system</scope>
+		<systemPath>C:/Git/ContextAnalyzer/jrosbridge.jar</systemPath>
+	</dependency>
+	
 	<!-- https://mvnrepository.com/artifact/org.eclipse.milo/sdk-client -->
 	<dependency>
 	    <groupId>org.eclipse.milo</groupId>
@@ -32,11 +85,5 @@
         <artifactId>jackson-databind</artifactId>
         <version>2.12.5</version>
     </dependency>
-    <!-- <dependency>
-	    <groupId>edu.wpi.rail</groupId>
-	    <artifactId>jrosbridge</artifactId>
-	    <version>0.2.0</version>
-	</dependency>
-	 -->
   </dependencies>
 </project>

@@ -1,8 +1,21 @@
 package mgep.ContextAwareAasBpmn.DeviceServiceOntClient.Main;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import mgep.ContextAwareAasBpmn.Entities.*;
 import mgep.ContextAwareAasBpmn.Enums.*;
@@ -13,15 +26,16 @@ public class SynchronizeThisDeviceData {
 
 	public static void main(String[] args) {
 		//load config file
-		String filePath = SynchronizeThisDeviceData.class.getClassLoader().getResource("config.properties").getPath();
-		Tools.LoadEnvironmentFromPropertiesFile(filePath);
+		//String filePath = SynchronizeThisDeviceData.class.getClassLoader().getResource("config.properties").getPath();
+		//Tools.LoadEnvironmentFromPropertiesFile(filePath);
 		
 		RDFRepositoryManager repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		RDFDAL rdfDal = new RDFDAL();
 		
 		int blockSize = 200;
+		int epoch = 1;
 
-		while(true) {
+		while(epoch <= 1000) {
 			//delete all
 			System.out.println("Deleting");
 			String prepareDelete = "delete where {?s ?o ?p};";
@@ -33,7 +47,7 @@ public class SynchronizeThisDeviceData {
 			int thirdSubnet = 1;
 			int fourthSubnet = 1;
 			String queryInsert = "";
-			int qtyShells = 8000;
+			int qtyShells = 200;
 			
 			try {			
 				for (int i = 1; i <= qtyShells; i++) {				
@@ -73,12 +87,118 @@ public class SynchronizeThisDeviceData {
 					fourthSubnet++;
 				}
 				
-				System.out.println("Waiting for next run");
-				Thread.sleep(20000);
-			} catch (InterruptedException e) {
+				System.out.println("Epoch " + epoch + ". Initiating context validation...");
+				
+				//Random Selection of a service
+				int randomShellInt = Tools.GetRandomNumber(1, qtyShells);
+				String randomAssetIdentifier = String.format("AssetAdministrationShell---%s", randomShellInt);
+				String randomAssetIdShort = String.format("AASLegoColorSorter0%s", randomShellInt);
+				String serviceName = "ThrowCurrentPiece";
+				
+				//invoke API to get this random service
+				StringBuilder responseRandomService = new StringBuilder();
+				try {
+					URL url = new URL(String.format("http://localhost:8080/ContextAwareAasBpmn/api/ContextAnalyzer/GetServiceByName?aasIdentifier=%s&serviceName=%s", randomAssetIdentifier, serviceName));
+					HttpURLConnection client = (HttpURLConnection) url.openConnection();					
+					
+					client.setRequestMethod("GET");
+					BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+					String inputLine;
+					
+					while ((inputLine = in.readLine()) != null) {
+						responseRandomService.append(inputLine);
+					}
+					in.close();
+					client.disconnect();
+				} catch (Exception e) {
+					e.printStackTrace();
+				} 
+				
+				// Parse the JSON response
+		        JsonNode responseNodeRandomService = new ObjectMapper().readTree(responseRandomService.toString());
+
+		        // Extract the values of parameterValue where parameterName is BATTERY and PROXIMITY
+		        JsonNode qualityParametersNode = responseNodeRandomService.path("serviceQualityParameters");
+		        StringBuilder parameterValuesRandomService = new StringBuilder();
+		        for (JsonNode parameterNodeRandomService : qualityParametersNode) {
+		            String parameterName = parameterNodeRandomService.path("parameterName").asText();
+		            if (parameterName.equals("BATTERY") || parameterName.equals("PROXIMITY")) {
+		                String parameterValue = parameterNodeRandomService.path("parameterValue").asText();
+		                parameterValuesRandomService.append(String.format("%s: %s", parameterName, parameterValue)).append(", ");
+		            }
+		        }
+				
+				System.out.println(String.format("Random Dispatch Service: %s QoS Parameters: %s", randomAssetIdentifier, parameterValuesRandomService));
+				
+				//now use context analyzer for best service selection
+				StringBuilder responseContextBestService = new StringBuilder();
+				try {
+					URL url = new URL("http://localhost:8080/ContextAwareAasBpmn/api/ContextAnalyzer/ValidateContextSelectBestService");
+					HttpURLConnection client = (HttpURLConnection) url.openConnection();
+					client.setRequestProperty("Content-Type", "application/json");
+					client.setDoOutput(true);
+					
+					client.setRequestMethod("POST");
+					OutputStream wr = client.getOutputStream();
+					String requestBody= "{"
+							+ "    \"aasIdShort\": \""+ randomAssetIdShort +"\",\r\n"
+							+ "    \"serviceName\": \""+ serviceName +"\",\r\n"
+							+ "    \"qualityParameters\": [\r\n"
+							+ "        {\r\n"
+							+ "            \"qualityParameterEvaluationExpression\": \"BATTERY >= 50\"\r\n"
+							+ "        },{\r\n"
+							+ "            \"qualityParameterEvaluationExpression\": \"PROXIMITY < 20\"\r\n"
+							+ "        }\r\n"
+							+ "    ] \r\n"
+							+ "}";
+					wr.write(requestBody.getBytes());
+					wr.flush();					
+					
+					BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+					String inputLine;
+					
+					while ((inputLine = in.readLine()) != null) {
+						responseContextBestService.append(inputLine);
+					}
+					in.close();
+					client.disconnect();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				// Parse the JSON response
+		        JsonNode responseNodeContextBestService = new ObjectMapper().readTree(responseContextBestService.toString());
+
+		        // Extract the values of aasIdentifier from suggestedService
+		        String aasIdentifierContextBestService = responseNodeContextBestService.path("suggestedService").path("aasIdentifier").asText();
+
+		        // Extract the values of parameterValue where parameterName is BATTERY and PROXIMITY
+		        JsonNode qualityParametersNodeContextBestService = responseNodeContextBestService.path("suggestedService").path("serviceQualityParameters");
+		        StringBuilder parameterValuesContextBestService = new StringBuilder();
+		        for (JsonNode parameterNode : qualityParametersNodeContextBestService) {
+		            String parameterName = parameterNode.path("parameterName").asText();
+		            if (parameterName.equals("BATTERY") || parameterName.equals("PROXIMITY")) {
+		                String parameterValue = parameterNode.path("parameterValue").asText();
+		                parameterValuesContextBestService.append(String.format("%s: %s", parameterName, parameterValue)).append(", ");
+		            }
+		        }
+				
+				System.out.println(String.format("Context Dispatch Best Service: %s QoS Parameters: %s", aasIdentifierContextBestService, parameterValuesContextBestService));
+				
+				
+				//System.out.println("Waiting for next run");
+				//Thread.sleep(20000);
+			//} catch (InterruptedException e) {
+			//	e.printStackTrace();
+			} catch (JsonMappingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			break;
+			
+			epoch++;
 		}
 	}
 	
@@ -131,7 +251,7 @@ public class SynchronizeThisDeviceData {
 		serviceGetPieceColor.setServiceOutputParameters(opsServiceGetPieceColor);
 
 		//quality		
-		serviceGetPieceColor.setServiceQualityParameters(generateQoS());
+		serviceGetPieceColor.setServiceQualityParameters(Tools.GenerateDefaultQoS(EnumQualityGenStrategy.RANDOM_VALUES));
 		lServices.add(serviceGetPieceColor);
 		
 		//motorStatus
@@ -155,7 +275,7 @@ public class SynchronizeThisDeviceData {
 		serviceMotorStatus.setServiceOutputParameters(opsServiceMotorStatus);
 
 		//quality		
-		serviceMotorStatus.setServiceQualityParameters(generateQoS());
+		serviceMotorStatus.setServiceQualityParameters(Tools.GenerateDefaultQoS(EnumQualityGenStrategy.RANDOM_VALUES));
 		lServices.add(serviceMotorStatus);
 		
 		//MoveFeedTrayToFarLeft
@@ -177,7 +297,7 @@ public class SynchronizeThisDeviceData {
 		serviceMoveFeedTrayToFarLeft.setServiceOutputParameters(outputParametersServiceMoveFeedTrayToFarLeft);
 		
 		//quality	
-		serviceMoveFeedTrayToFarLeft.setServiceQualityParameters(generateQoS());
+		serviceMoveFeedTrayToFarLeft.setServiceQualityParameters(Tools.GenerateDefaultQoS(EnumQualityGenStrategy.RANDOM_VALUES));
 		lServices.add(serviceMoveFeedTrayToFarLeft);
 		
 		//MoveFeedTrayToFarRight
@@ -199,7 +319,7 @@ public class SynchronizeThisDeviceData {
 		serviceMoveFeedTrayToFarRight.setServiceOutputParameters(serviceOutputParametersServiceMoveFeedTrayToFarRight);
 		
 		//quality	
-		serviceMoveFeedTrayToFarRight.setServiceQualityParameters(generateQoS());
+		serviceMoveFeedTrayToFarRight.setServiceQualityParameters(Tools.GenerateDefaultQoS(EnumQualityGenStrategy.RANDOM_VALUES));
 		lServices.add(serviceMoveFeedTrayToFarRight);
 		
 		//ThrowCurrentPiece
@@ -222,7 +342,7 @@ public class SynchronizeThisDeviceData {
 		serviceThrowCurrentPiece.setServiceOutputParameters(opsServiceThrowCurrentPiece);
 		
 		//quality	
-		serviceThrowCurrentPiece.setServiceQualityParameters(generateQoS());
+		serviceThrowCurrentPiece.setServiceQualityParameters(Tools.GenerateDefaultQoS(EnumQualityGenStrategy.RANDOM_VALUES));
 		lServices.add(serviceThrowCurrentPiece);
 		
 		
@@ -243,7 +363,7 @@ public class SynchronizeThisDeviceData {
 		serviceIsFeedTrayToFarRight.setServiceOutputParameters(opsServiceIsFeedTrayToFarRight);
 		
 		//quality	
-		serviceIsFeedTrayToFarRight.setServiceQualityParameters(generateQoS());
+		serviceIsFeedTrayToFarRight.setServiceQualityParameters(Tools.GenerateDefaultQoS(EnumQualityGenStrategy.RANDOM_VALUES));
 		lServices.add(serviceIsFeedTrayToFarRight);
 				
 		//IsFeedTrayToFarLeft
@@ -262,29 +382,11 @@ public class SynchronizeThisDeviceData {
 		serviceIsFeedTrayToFarLeft.setServiceOutputParameters(opsServiceIsFeedTrayToFarLeft);
 		
 		//quality	
-		serviceIsFeedTrayToFarLeft.setServiceQualityParameters(generateQoS());
+		serviceIsFeedTrayToFarLeft.setServiceQualityParameters(Tools.GenerateDefaultQoS(EnumQualityGenStrategy.RANDOM_VALUES));
 		lServices.add(serviceIsFeedTrayToFarLeft);
 		
 		//build query insert
 		String queryInsert = rdfDal.prepareInsertDeviceQuery(deviceObj);
 		return queryInsert;
-	}
-	
-	
-	
-	private static List<QualityParameterDTO> generateQoS(){
-		List<QualityParameterDTO> qos = new ArrayList<QualityParameterDTO>();
-		qos.add(new QualityParameterDTO("SuccessRate", "Decimal", String.valueOf(Tools.GetRandomNumber(50, 100)), EnumQualityType.SERVICE.name(), "SuccessRate >= 80"));
-		qos.add(new QualityParameterDTO("AvgResponseTime", "Integer", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "AvgResponseTime <= 1000"));
-		qos.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
-		qos.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
-		qos.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
-		qos.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
-		qos.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
-		qos.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
-		qos.add(new QualityParameterDTO("SIZE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "SIZE <= 10"));
-		qos.add(new QualityParameterDTO("BATTERY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "BATTERY >= 65"));
-		qos.add(new QualityParameterDTO("PROXIMITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "PROXIMITY <= 70"));
-		return qos;
 	}
 }

@@ -188,15 +188,6 @@
     
 
 
-    <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#deviceNetworkLatency -->
-
-    <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#deviceNetworkLatency">
-        <rdfs:domain rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#parameterName -->
 
     <owl:DatatypeProperty rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#parameterName">
