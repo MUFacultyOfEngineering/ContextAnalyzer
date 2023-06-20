@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>mgep.ContextAwareAasBpmn.DeviceServiceOntClient</name>
+	<name>mgep.ContextAwareAasBpmn.Test</name>
 	<comment></comment>
 	<projects>
 		<project>mgep.ContextAwareAasBpmn.Core</project>

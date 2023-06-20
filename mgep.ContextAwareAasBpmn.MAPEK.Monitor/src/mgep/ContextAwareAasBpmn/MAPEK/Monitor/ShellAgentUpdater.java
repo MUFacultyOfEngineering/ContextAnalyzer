@@ -53,7 +53,8 @@ public class ShellAgentUpdater {
 		if (!resultInsertAllAtOnce) return;
 		
 		//update QoS values every x milliseconds
-		while(true) {			
+		while(true) {
+			var lThreads = new ArrayList<Thread>();
 			for (var shellObj : lShells) {
 				//eval shell has services
 				if (shellObj.getServices() == null || shellObj.getServices().size() == 0) {
@@ -64,18 +65,39 @@ public class ShellAgentUpdater {
 				//get some ramdon qos
 				//var lNewQualityParams = Tools.GenerateDefaultQoS(EnumQualityGenStrategy.BEST_VALUES);
 				
-				//Get quality values from InterfaceConnectionSheet aas submodel once per shell
-				var lNewQualityParamsDevice = agentUpdater.GetQualityValsFromInterfacteConnectionSubmodel(shellObj.getDeviceIPAddress(), shellObj.getServices().get(0).getServiceQualityParameters());
+				//create a thread for each shell to execute update of all services
+				var tUpdateQualityProps = new Thread(new Runnable() {					
+					@Override
+					public void run() {
+						//Get quality values from InterfaceConnectionSheet aas submodel once per shell
+						var lNewQualityParamsDevice = agentUpdater.GetQualityValsFromInterfacteConnectionSubmodel(shellObj.getDeviceIPAddress(), shellObj.getServices().get(0).getServiceQualityParameters());
+						
+						//loop through services and update QoS
+						for (var serviceObj : shellObj.getServices()) {
+							serviceObj.setServiceQualityParameters(lNewQualityParamsDevice);
+						}
+					}
+				});
 				
-				//loop through services and update QoS
-				for (var serviceObj : shellObj.getServices()) {
-					serviceObj.setServiceQualityParameters(lNewQualityParamsDevice);
-				}
-				
-				//execute update all services at once
-				var updateQualityParamsResult = rdfDal.UpdateQualityParamtersOfAllServicesOfaShell(shellObj.getServices());
-				System.out.println(String.format("Update quality params result: %s Shell: %s Services: %s #QoS: %s", updateQualityParamsResult, shellObj.getAasIdShort(), shellObj.getServices().size(), lNewQualityParamsDevice.size()));
+				tUpdateQualityProps.start();
+				lThreads.add(tUpdateQualityProps);
 			}
+			//wait for all threads to finish
+			for (Thread t : lThreads) {
+				t.join();
+			}
+			
+			//loop through services and concatenate updateQuery
+			var updateQuery = "";
+			for (var shellObj : lShells) {
+				updateQuery += rdfDal.BuildUpdateQualityParamtersOfAllServicesOfaShell(shellObj.getServices());
+			}
+			
+			//execute update
+			var updateQualityParamsResult = rdfDal.ExecuteUpdate(updateQuery);
+			System.out.println(String.format("Update quality params result: %s", updateQualityParamsResult));
+			
+			//wait for next run
 			System.out.println(String.format("Waiting %s milliseconds for next update...", Tools.INTERVAL_GATHER_QOS_VALS));
 			Thread.sleep(Tools.INTERVAL_GATHER_QOS_VALS);
 		}

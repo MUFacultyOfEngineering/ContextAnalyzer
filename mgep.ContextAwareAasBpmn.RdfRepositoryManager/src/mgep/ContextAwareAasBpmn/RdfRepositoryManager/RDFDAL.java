@@ -705,10 +705,7 @@ public class RDFDAL {
 		return repManager.executeQuery(Tools.REPOSITORY_ID, insertQueryQualityParams);
 	}
 	
-	public Boolean UpdateQualityParamtersOfAllServicesOfaShell(List<ServiceDTO> lServicesWithNewQualityParameters) {
-		log.info("Enter UpdateQualityParamtersOfAllServicesOfaShell");		
-		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
-		
+	public String BuildUpdateQualityParamtersOfAllServicesOfaShell(List<ServiceDTO> lServicesWithNewQualityParameters) {			
 		//prepare delete
 		var deleteQualityQuery = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 				+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n";
@@ -748,8 +745,15 @@ public class RDFDAL {
 			insertQueryQualityParams += insertService;
 		}
 		
-		//execute insert
-		return repManager.executeQuery(Tools.REPOSITORY_ID, insertQueryQualityParams);
+		return insertQueryQualityParams;
+	}
+	
+	public Boolean ExecuteUpdate(String updateQuery) {
+		log.info("Enter ExecuteUpdate");		
+		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		
+		//execute update
+		return repManager.executeQuery(Tools.REPOSITORY_ID, updateQuery);
 	}
 	
 	public String prepareInsertDeviceQuery(DeviceDTO deviceObj) {

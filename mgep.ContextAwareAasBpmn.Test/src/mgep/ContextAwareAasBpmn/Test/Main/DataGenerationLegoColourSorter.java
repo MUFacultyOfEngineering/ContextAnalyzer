@@ -1,4 +1,4 @@
-package mgep.ContextAwareAasBpmn.DeviceServiceOntClient.Main;
+package mgep.ContextAwareAasBpmn.Test.Main;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -8,6 +8,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -22,7 +23,7 @@ import mgep.ContextAwareAasBpmn.Enums.*;
 import mgep.ContextAwareAasBpmn.RdfRepositoryManager.*;
 import mgep.ContextAwareAasBpmn.Core.*;
 
-public class SynchronizeThisDeviceData {
+public class DataGenerationLegoColourSorter {
 
 	public static void main(String[] args) {
 		//load config file
@@ -34,171 +35,195 @@ public class SynchronizeThisDeviceData {
 		
 		int blockSize = 200;
 		int epoch = 1;
+		int maxEpochs = 1000;
+		int qtyShells = 200;
+		
+		List<String> lParamsToMeasure = new ArrayList<String>();
+		lParamsToMeasure.add("BATTERY");
+		lParamsToMeasure.add("PROXIMITY");
+		lParamsToMeasure.add("EnergyConsumption");
+		lParamsToMeasure.add("PayloadCapacity");
+		lParamsToMeasure.add("AvgNetworkLatency");
+		
+		List<String> lQoSConditions = new ArrayList<String>();
+		lQoSConditions.add("BATTERY >= 20");
+		lQoSConditions.add("PROXIMITY <= 200");
+		lQoSConditions.add("EnergyConsumption < 3");
+		lParamsToMeasure.add("PayloadCapacity >= 2");
+		lParamsToMeasure.add("AvgNetworkLatency <= 100");
 
-		while(epoch <= 1000) {
-			//delete all
-			System.out.println("Deleting");
-			String prepareDelete = "delete where {?s ?o ?p};";
-			repManager.executeQuery(Tools.REPOSITORY_ID, prepareDelete);
-			
-			//initial ip
-			int firstSubnet = 192;
-			int secondSubnet = 168;
-			int thirdSubnet = 1;
-			int fourthSubnet = 1;
-			String queryInsert = "";
-			int qtyShells = 200;
-			
-			try {			
-				for (int i = 1; i <= qtyShells; i++) {				
-					if(fourthSubnet > 255) {
-						fourthSubnet = 1;
-						thirdSubnet += 1;
+		while(qtyShells <= 200) {
+			while(epoch <= maxEpochs) {
+				//delete all
+				System.out.println("Deleting");
+				String prepareDelete = "delete where {?s ?o ?p};";
+				repManager.executeQuery(Tools.REPOSITORY_ID, prepareDelete);
+				
+				//initial ip
+				int firstSubnet = 192;
+				int secondSubnet = 168;
+				int thirdSubnet = 1;
+				int fourthSubnet = 1;
+				String queryInsert = "";			
+				
+				try {			
+					for (int i = 1; i <= qtyShells; i++) {				
+						if(fourthSubnet > 255) {
+							fourthSubnet = 1;
+							thirdSubnet += 1;
+						}
+						
+						if(thirdSubnet > 255) {
+							thirdSubnet = 1;
+							secondSubnet += 1;
+						}
+						
+						if(secondSubnet > 255) {
+							secondSubnet = 1;
+							firstSubnet += 1;
+						}
+						
+						String ip = String.format("%s.%s.%s.%s", firstSubnet, secondSubnet, thirdSubnet, fourthSubnet);
+						queryInsert += insertColorSorters(rdfDal, i, ip);
+						
+						//if <= blockSize insert all at once
+						//if more than blockSize insert in blocks of blockSize
+						
+						if(qtyShells <= blockSize && i == qtyShells) {
+							boolean resultInsertAllAtOnce = repManager.executeQuery(Tools.REPOSITORY_ID, queryInsert);
+							System.out.println(String.format("Insert result: %s shells: %s of %s", resultInsertAllAtOnce, i, qtyShells));
+							queryInsert = "";
+						} else if(qtyShells > blockSize && i > 1 && (i % blockSize == 0 || i == qtyShells)) {
+							boolean resultInsertAllAtOnce = repManager.executeQuery(Tools.REPOSITORY_ID, queryInsert);
+							//show progress
+							Double progress = i * 100.0 / qtyShells;
+							System.out.println(String.format("Insert result: %s shells: %s of %s Progress: %s%%", resultInsertAllAtOnce, i, qtyShells, Math.round(progress)));
+							queryInsert = "";
+						}
+						
+						fourthSubnet++;
 					}
 					
-					if(thirdSubnet > 255) {
-						thirdSubnet = 1;
-						secondSubnet += 1;
+					System.out.println("Epoch " + epoch + ". Initiating context validation...");
+					
+					//Random Selection of a service
+					int randomShellInt = Tools.GetRandomNumber(1, qtyShells);
+					String randomAssetIdentifier = String.format("AssetAdministrationShell---%s", randomShellInt);
+					String randomAssetIdShort = String.format("AASLegoColorSorter0%s", randomShellInt);
+					String serviceName = "ThrowCurrentPiece";
+					
+					//invoke API to get this random service
+					StringBuilder responseRandomService = new StringBuilder();
+					try {
+						URL url = new URL(String.format("http://localhost:8080/ContextAwareAasBpmn/api/ContextAnalyzer/GetServiceByName?aasIdentifier=%s&serviceName=%s", randomAssetIdentifier, serviceName));
+						HttpURLConnection client = (HttpURLConnection) url.openConnection();					
+						
+						client.setRequestMethod("GET");
+						BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+						String inputLine;
+						
+						while ((inputLine = in.readLine()) != null) {
+							responseRandomService.append(inputLine);
+						}
+						in.close();
+						client.disconnect();
+					} catch (Exception e) {
+						e.printStackTrace();
+					} 
+					
+					// Parse the JSON response
+			        JsonNode responseNodeRandomService = new ObjectMapper().readTree(responseRandomService.toString());
+	
+			        // Extract the values of parameterValue where parameterName is BATTERY and PROXIMITY
+			        JsonNode qualityParametersNode = responseNodeRandomService.path("serviceQualityParameters");
+			        StringBuilder parameterValuesRandomService = new StringBuilder();
+			        for (JsonNode parameterNodeRandomService : qualityParametersNode) {
+			            String parameterName = parameterNodeRandomService.path("parameterName").asText();
+			            if (lParamsToMeasure.contains(parameterName)) {
+			                String parameterValue = parameterNodeRandomService.path("parameterValue").asText();
+			                parameterValuesRandomService.append(String.format("%s: %s", parameterName, parameterValue)).append(", ");
+			            }
+			        }
+					
+					System.out.println(String.format("Random Dispatch Service: %s QoS Parameters: %s", randomAssetIdentifier, parameterValuesRandomService));
+					
+					//now use context analyzer for best service selection
+					StringBuilder responseContextBestService = new StringBuilder();
+					try {
+						URL url = new URL("http://localhost:8080/ContextAwareAasBpmn/api/ContextAnalyzer/ValidateContextSelectBestService");
+						HttpURLConnection client = (HttpURLConnection) url.openConnection();
+						client.setRequestProperty("Content-Type", "application/json");
+						client.setDoOutput(true);
+						
+						client.setRequestMethod("POST");
+						OutputStream wr = client.getOutputStream();
+						
+						String qpee = "";
+						for (int i = 0; i < lQoSConditions.size(); i++) {
+							qpee += "{\r\n"
+									+ "\"qualityParameterEvaluationExpression\": \"" + lQoSConditions.get(i) + "\"\r\n"
+									+ "},";
+						}
+						qpee = qpee.substring(0, qpee.length()-1);
+						
+						String requestBody= "{"
+								+ "    \"aasIdShort\": \""+ randomAssetIdShort +"\",\r\n"
+								+ "    \"serviceName\": \""+ serviceName +"\",\r\n"
+								+ "    \"qualityParameters\": "
+								+ "[\r\n"
+								+ qpee
+								+ "] \r\n"
+								+ "}";
+						wr.write(requestBody.getBytes());
+						wr.flush();					
+						
+						BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+						String inputLine;
+						
+						while ((inputLine = in.readLine()) != null) {
+							responseContextBestService.append(inputLine);
+						}
+						in.close();
+						client.disconnect();
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 					
-					if(secondSubnet > 255) {
-						secondSubnet = 1;
-						firstSubnet += 1;
-					}
+					// Parse the JSON response
+			        JsonNode responseNodeContextBestService = new ObjectMapper().readTree(responseContextBestService.toString());
+	
+			        // Extract the values of aasIdentifier from suggestedService
+			        String aasIdentifierContextBestService = responseNodeContextBestService.path("suggestedService").path("aasIdentifier").asText();
+	
+			        // Extract the values of parameterValue where parameterName is BATTERY and PROXIMITY
+			        JsonNode qualityParametersNodeContextBestService = responseNodeContextBestService.path("suggestedService").path("serviceQualityParameters");
+			        StringBuilder parameterValuesContextBestService = new StringBuilder();
+			        for (JsonNode parameterNode : qualityParametersNodeContextBestService) {
+			            String parameterName = parameterNode.path("parameterName").asText();
+			            if (lParamsToMeasure.contains(parameterName)) {
+			                String parameterValue = parameterNode.path("parameterValue").asText();
+			                parameterValuesContextBestService.append(String.format("%s: %s", parameterName, parameterValue)).append(", ");
+			            }
+			        }
 					
-					String ip = String.format("%s.%s.%s.%s", firstSubnet, secondSubnet, thirdSubnet, fourthSubnet);
-					queryInsert += insertColorSorters(rdfDal, i, ip);
+					System.out.println(String.format("Context Dispatch Best Service: %s QoS Parameters: %s", aasIdentifierContextBestService, parameterValuesContextBestService));
 					
-					//if <= blockSize insert all at once
-					//if more than blockSize insert in blocks of blockSize
 					
-					if(qtyShells <= blockSize && i == qtyShells) {
-						boolean resultInsertAllAtOnce = repManager.executeQuery(Tools.REPOSITORY_ID, queryInsert);
-						System.out.println(String.format("Insert result: %s shells: %s of %s", resultInsertAllAtOnce, i, qtyShells));
-						queryInsert = "";
-					} else if(qtyShells > blockSize && i > 1 && (i % blockSize == 0 || i == qtyShells)) {
-						boolean resultInsertAllAtOnce = repManager.executeQuery(Tools.REPOSITORY_ID, queryInsert);
-						//show progress
-						Double progress = i * 100.0 / qtyShells;
-						System.out.println(String.format("Insert result: %s shells: %s of %s Progress: %s%%", resultInsertAllAtOnce, i, qtyShells, Math.round(progress)));
-						queryInsert = "";
-					}
-					
-					fourthSubnet++;
+					//System.out.println("Waiting for next run");
+					//Thread.sleep(20000);
+				//} catch (InterruptedException e) {
+				//	e.printStackTrace();
+				} catch (JsonMappingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (JsonProcessingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 				
-				System.out.println("Epoch " + epoch + ". Initiating context validation...");
-				
-				//Random Selection of a service
-				int randomShellInt = Tools.GetRandomNumber(1, qtyShells);
-				String randomAssetIdentifier = String.format("AssetAdministrationShell---%s", randomShellInt);
-				String randomAssetIdShort = String.format("AASLegoColorSorter0%s", randomShellInt);
-				String serviceName = "ThrowCurrentPiece";
-				
-				//invoke API to get this random service
-				StringBuilder responseRandomService = new StringBuilder();
-				try {
-					URL url = new URL(String.format("http://localhost:8080/ContextAwareAasBpmn/api/ContextAnalyzer/GetServiceByName?aasIdentifier=%s&serviceName=%s", randomAssetIdentifier, serviceName));
-					HttpURLConnection client = (HttpURLConnection) url.openConnection();					
-					
-					client.setRequestMethod("GET");
-					BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-					String inputLine;
-					
-					while ((inputLine = in.readLine()) != null) {
-						responseRandomService.append(inputLine);
-					}
-					in.close();
-					client.disconnect();
-				} catch (Exception e) {
-					e.printStackTrace();
-				} 
-				
-				// Parse the JSON response
-		        JsonNode responseNodeRandomService = new ObjectMapper().readTree(responseRandomService.toString());
-
-		        // Extract the values of parameterValue where parameterName is BATTERY and PROXIMITY
-		        JsonNode qualityParametersNode = responseNodeRandomService.path("serviceQualityParameters");
-		        StringBuilder parameterValuesRandomService = new StringBuilder();
-		        for (JsonNode parameterNodeRandomService : qualityParametersNode) {
-		            String parameterName = parameterNodeRandomService.path("parameterName").asText();
-		            if (parameterName.equals("BATTERY") || parameterName.equals("PROXIMITY")) {
-		                String parameterValue = parameterNodeRandomService.path("parameterValue").asText();
-		                parameterValuesRandomService.append(String.format("%s: %s", parameterName, parameterValue)).append(", ");
-		            }
-		        }
-				
-				System.out.println(String.format("Random Dispatch Service: %s QoS Parameters: %s", randomAssetIdentifier, parameterValuesRandomService));
-				
-				//now use context analyzer for best service selection
-				StringBuilder responseContextBestService = new StringBuilder();
-				try {
-					URL url = new URL("http://localhost:8080/ContextAwareAasBpmn/api/ContextAnalyzer/ValidateContextSelectBestService");
-					HttpURLConnection client = (HttpURLConnection) url.openConnection();
-					client.setRequestProperty("Content-Type", "application/json");
-					client.setDoOutput(true);
-					
-					client.setRequestMethod("POST");
-					OutputStream wr = client.getOutputStream();
-					String requestBody= "{"
-							+ "    \"aasIdShort\": \""+ randomAssetIdShort +"\",\r\n"
-							+ "    \"serviceName\": \""+ serviceName +"\",\r\n"
-							+ "    \"qualityParameters\": [\r\n"
-							+ "        {\r\n"
-							+ "            \"qualityParameterEvaluationExpression\": \"BATTERY >= 50\"\r\n"
-							+ "        },{\r\n"
-							+ "            \"qualityParameterEvaluationExpression\": \"PROXIMITY < 20\"\r\n"
-							+ "        }\r\n"
-							+ "    ] \r\n"
-							+ "}";
-					wr.write(requestBody.getBytes());
-					wr.flush();					
-					
-					BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-					String inputLine;
-					
-					while ((inputLine = in.readLine()) != null) {
-						responseContextBestService.append(inputLine);
-					}
-					in.close();
-					client.disconnect();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				
-				// Parse the JSON response
-		        JsonNode responseNodeContextBestService = new ObjectMapper().readTree(responseContextBestService.toString());
-
-		        // Extract the values of aasIdentifier from suggestedService
-		        String aasIdentifierContextBestService = responseNodeContextBestService.path("suggestedService").path("aasIdentifier").asText();
-
-		        // Extract the values of parameterValue where parameterName is BATTERY and PROXIMITY
-		        JsonNode qualityParametersNodeContextBestService = responseNodeContextBestService.path("suggestedService").path("serviceQualityParameters");
-		        StringBuilder parameterValuesContextBestService = new StringBuilder();
-		        for (JsonNode parameterNode : qualityParametersNodeContextBestService) {
-		            String parameterName = parameterNode.path("parameterName").asText();
-		            if (parameterName.equals("BATTERY") || parameterName.equals("PROXIMITY")) {
-		                String parameterValue = parameterNode.path("parameterValue").asText();
-		                parameterValuesContextBestService.append(String.format("%s: %s", parameterName, parameterValue)).append(", ");
-		            }
-		        }
-				
-				System.out.println(String.format("Context Dispatch Best Service: %s QoS Parameters: %s", aasIdentifierContextBestService, parameterValuesContextBestService));
-				
-				
-				//System.out.println("Waiting for next run");
-				//Thread.sleep(20000);
-			//} catch (InterruptedException e) {
-			//	e.printStackTrace();
-			} catch (JsonMappingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JsonProcessingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				epoch++;
 			}
-			
-			epoch++;
+			qtyShells += 25;
 		}
 	}
 	

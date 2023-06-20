@@ -76,11 +76,12 @@ public class RosConsumer {
 			RosConsumer.subscribeRosTopic(topicName, messageType);
 		}
 		
-		//return latest value
+		//wait some seconds
 		var i = 0;
-		while((RosConsumer.mapLatestValuesTopics == null || !RosConsumer.mapLatestValuesTopics.containsKey(topicName)) && i < 5) {
+		//while((RosConsumer.mapLatestValuesTopics == null || !RosConsumer.mapLatestValuesTopics.containsKey(topicName)) && i < 5) {
+		while(i < 5) {
 			try {
-				System.out.println(String.format("waiting for topic message %s", topicName));
+				//System.out.println(String.format("waiting for topic message %s", topicName));
 				i++;
 				Thread.sleep(500);
 			} catch (InterruptedException e) {

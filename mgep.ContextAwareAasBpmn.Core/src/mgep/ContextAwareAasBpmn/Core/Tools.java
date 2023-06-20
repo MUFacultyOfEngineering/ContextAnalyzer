@@ -25,7 +25,7 @@ public final class Tools {
 	 * @return a random int
 	 */
 	public static int GetRandomNumber(int min, int max) {
-	    return (int) ((Math.random() * (max - min)) + min);
+	    return (int) ((Math.random() * (max - min + 1)) + min);
 	}
 	
 	/**
@@ -73,6 +73,9 @@ public final class Tools {
 				qos.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(0), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
 				qos.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(0), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
 				qos.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(0), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
+				qos.add(new QualityParameterDTO("Throughput", "Integer", String.valueOf(10), EnumQualityType.DEVICE.name(), "Throughput > 5"));
+				qos.add(new QualityParameterDTO("EnergyConsumption", "Integer", String.valueOf(1), EnumQualityType.DEVICE.name(), "EnergyConsumption < 3"));
+				qos.add(new QualityParameterDTO("PayloadCapacity", "Integer", String.valueOf(10), EnumQualityType.DEVICE.name(), "PayloadCapacity > 10"));
 				qos.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(0), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
 				qos.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(15), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
 				qos.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(0), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
@@ -86,6 +89,9 @@ public final class Tools {
 				qos.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(Tools.GetRandomNumber(100, 10000)), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
 				qos.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
 				qos.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(Tools.GetRandomNumber(10, 500)), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
+				qos.add(new QualityParameterDTO("Throughput", "Integer", String.valueOf(Tools.GetRandomNumber(1, 10)), EnumQualityType.DEVICE.name(), "Throughput > 5"));
+				qos.add(new QualityParameterDTO("EnergyConsumption", "Integer", String.valueOf(Tools.GetRandomNumber(1, 5)), EnumQualityType.DEVICE.name(), "EnergyConsumption < 3"));
+				qos.add(new QualityParameterDTO("PayloadCapacity", "Integer", String.valueOf(Tools.GetRandomNumber(1, 10)), EnumQualityType.DEVICE.name(), "PayloadCapacity > 10"));
 				qos.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
 				qos.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 100)), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
 				qos.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(Tools.GetRandomNumber(1, 20)), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
@@ -99,6 +105,9 @@ public final class Tools {
 				qos.add(new QualityParameterDTO("LastResponseTime", "Decimal", String.valueOf(100000), EnumQualityType.SERVICE.name(), "LastResponseTime <= 1000"));
 				qos.add(new QualityParameterDTO("AvgNetworkLatency", "Integer", String.valueOf(1000), EnumQualityType.DEVICE.name(), "AvgNetworkLatency <= 300"));
 				qos.add(new QualityParameterDTO("LastNetworkLatency", "Integer", String.valueOf(1000), EnumQualityType.DEVICE.name(), "LastNetworkLatency <= 300"));
+				qos.add(new QualityParameterDTO("Throughput", "Integer", String.valueOf(0), EnumQualityType.DEVICE.name(), "Throughput > 5"));
+				qos.add(new QualityParameterDTO("EnergyConsumption", "Integer", String.valueOf(5), EnumQualityType.DEVICE.name(), "EnergyConsumption < 3"));
+				qos.add(new QualityParameterDTO("PayloadCapacity", "Integer", String.valueOf(1), EnumQualityType.DEVICE.name(), "PayloadCapacity > 10"));
 				qos.add(new QualityParameterDTO("HUMIDITY", "Decimal", String.valueOf(100), EnumQualityType.SENSOR.name(), "HUMIDITY <= 50"));
 				qos.add(new QualityParameterDTO("TEMPERATURE", "Decimal", String.valueOf(50), EnumQualityType.SENSOR.name(), "TEMPERATURE <= 30"));
 				qos.add(new QualityParameterDTO("WEIGHT", "Decimal", String.valueOf(100), EnumQualityType.SENSOR.name(), "WEIGHT <= 10"));
