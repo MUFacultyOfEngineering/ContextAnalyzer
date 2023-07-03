@@ -236,9 +236,9 @@ public class ShellAgentUpdater {
 				
 				//outputs
 				//TODO: need to map this from AAS
-				var opsServiceGetPieceColor = new ArrayList<ParameterDTO>();
-				opsServiceGetPieceColor.add(new ParameterDTO("color", "text", "Yellow|Red|Blue|Green"));
-				serviceObj.setServiceOutputParameters(opsServiceGetPieceColor);
+				//var opsServiceGetPieceColor = new ArrayList<ParameterDTO>();
+				//opsServiceGetPieceColor.add(new ParameterDTO("color", "text", "Yellow|Red|Blue|Green"));
+				//serviceObj.setServiceOutputParameters(opsServiceGetPieceColor);
 				
 				//set quality params from aas, they dont have values during first run
 				serviceObj.setServiceQualityParameters(lSensorQualityParameters);

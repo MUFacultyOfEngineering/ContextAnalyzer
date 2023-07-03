@@ -474,6 +474,7 @@ public class RDFDAL {
 	public ResponseContextValServiceSelectionDTO ValidateContextSelectBestService(RequestContextValServiceSelectionDTO requestObj) {
 		log.info("Enter ValidateContextSelectBestService");		
 		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
+		var contextValidationResult = new ResponseContextValServiceSelectionDTO(true, "OK");
 
 		//prepare select requested service
 		ServiceDTO requestedServiceObj = null;
@@ -499,14 +500,13 @@ public class RDFDAL {
 		try {
 			var bindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, queryRequestedService);
 			if(bindingSet.isEmpty()) {
-				var contextValidationResult = new ResponseContextValServiceSelectionDTO(false, "The requested service does not match to our records. Please check you have provided the right information.");
+				contextValidationResult.setCanExecute(false);
+				contextValidationResult.setMessage("The requested service does not match to our records. Please check you have provided the right information.");
 				return contextValidationResult;
 			}
 			
 			requestedServiceObj = mapServiceModelObjToDTO(bindingSet.get(0));
-			
-			//set quality parameters
-			requestedServiceObj.setServiceQualityParameters(GetServiceQualityParametersByServiceId(requestedServiceObj.getServiceIdentifier()));	
+			requestedServiceObj.setServiceQualityParameters(GetServiceQualityParametersByServiceId(requestedServiceObj.getServiceIdentifier()));
 		} catch (Exception e) {
 			log.catching(e);
 			System.out.println(e.getMessage());
@@ -591,14 +591,33 @@ public class RDFDAL {
 		try {
 			var lBindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, queryWithFilterSuggestedService);
 			if(!lBindingSet.isEmpty()) {
-				for (var item : lBindingSet) {
-					var serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();					
-					//if is the same as the one requested, do nothing and seek for the next one
-					if(serviceIdentifier.equals(requestedServiceObj.getServiceIdentifier())) continue;
-					//set suggestedService and  break loop
-					suggestedServiceObj = mapServiceModelObjToDTO(item);
-					break;
+				//get the first one only
+				var item =  lBindingSet.get(0);
+				var serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();
+				
+				//if is the same as the one requested, prepare response and return it
+				if(serviceIdentifier.equals(requestedServiceObj.getServiceIdentifier())) {
+					requestedServiceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(requestedServiceObj.getServiceIdentifier()));
+					requestedServiceObj.setServiceOutputParameters(GetServiceOutputParametersByServiceId(requestedServiceObj.getServiceIdentifier()));
+					
+					//prepare response
+					contextValidationResult.setCanExecute(true);
+					contextValidationResult.setMessage("The requested service has the best quality values.");
+					contextValidationResult.setSuggestedService(requestedServiceObj);
+					return contextValidationResult;
 				}
+				
+				//else, set suggestedService becasue  is the service that meets all quality conditions
+				suggestedServiceObj = mapServiceModelObjToDTO(item);
+				suggestedServiceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
+				suggestedServiceObj.setServiceOutputParameters(GetServiceOutputParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
+				suggestedServiceObj.setServiceQualityParameters(GetServiceQualityParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
+				
+				//prepare response
+				contextValidationResult.setCanExecute(false);
+				contextValidationResult.setMessage("A better service is recommended after evaluating the quality conditions.");
+				contextValidationResult.setSuggestedService(suggestedServiceObj);
+				return contextValidationResult;
 			}			
 		} catch (Exception e) {
 			log.catching(e);
@@ -606,7 +625,7 @@ public class RDFDAL {
 			return null;
 		}
 		
-		//if suggestedService is still empty, means none of the services meet the Quality conditions. In that case, remove the filter and try again
+		//if suggestedService still is empty, means none of the services meet the Quality conditions. In that case, remove the filter and try again
 		if (suggestedServiceObj == null) {
 			var queryWithoutFilterSuggestedService = "PREFIX rdf: <" + Tools.RDF_IRI + ">\r\n"
 					+ "PREFIX dsOnt: <" + Tools.DEVICE_SERVICE_ONT_IRI + ">\r\n"
@@ -632,14 +651,32 @@ public class RDFDAL {
 			try {
 				var lBindingSet = repManager.makeSPARQLquery(Tools.REPOSITORY_ID, queryWithoutFilterSuggestedService);
 				if(!lBindingSet.isEmpty()) {
-					for (var item : lBindingSet) {
-						var serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();					
-						//if is the same as the one requested, do nothing and seek for the next one
-						if(serviceIdentifier.equals(requestedServiceObj.getServiceIdentifier())) continue;
-						//set suggestedService and  break loop
-						suggestedServiceObj = mapServiceModelObjToDTO(item);
-						break;
+					var item = lBindingSet.get(0);
+					var serviceIdentifier = item.getBinding("serviceIdentifier").getValue().stringValue();
+					
+					//if is the same as the one requested, prepare response and return it
+					if(serviceIdentifier.equals(requestedServiceObj.getServiceIdentifier())) {
+						requestedServiceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(requestedServiceObj.getServiceIdentifier()));
+						requestedServiceObj.setServiceOutputParameters(GetServiceOutputParametersByServiceId(requestedServiceObj.getServiceIdentifier()));
+						
+						//prepare response
+						contextValidationResult.setCanExecute(true);
+						contextValidationResult.setMessage("None of the services meet with the quality conditions. However, the requested service has the best quality values.");
+						contextValidationResult.setSuggestedService(requestedServiceObj);
+						return contextValidationResult;
 					}
+					
+					//set suggestedService
+					suggestedServiceObj = mapServiceModelObjToDTO(item);
+					suggestedServiceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
+					suggestedServiceObj.setServiceOutputParameters(GetServiceOutputParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
+					suggestedServiceObj.setServiceQualityParameters(GetServiceQualityParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
+					
+					//prepare response
+					contextValidationResult.setCanExecute(false);
+					contextValidationResult.setMessage("None of the services meet with the quality conditions. However, the service with the best quality values is recommended.");
+					contextValidationResult.setSuggestedService(suggestedServiceObj);
+					return contextValidationResult;
 				}			
 			} catch (Exception e) {
 				log.catching(e);
@@ -649,19 +686,6 @@ public class RDFDAL {
 		}
 		
 		//prepare response
-		var contextValidationResult = new ResponseContextValServiceSelectionDTO(true, "OK");
-		
-		//if suggestedService is found: set input, output and quality parameters
-		if(suggestedServiceObj != null) {
-			suggestedServiceObj.setServiceInputParameters(GetServiceInputParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
-			suggestedServiceObj.setServiceOutputParameters(GetServiceOutputParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
-			suggestedServiceObj.setServiceQualityParameters(GetServiceQualityParametersByServiceId(suggestedServiceObj.getServiceIdentifier()));
-			
-			contextValidationResult.setSuggestedService(suggestedServiceObj);
-			contextValidationResult.setMessage("A better service is recommended after evaluating QoS parameters");
-			contextValidationResult.setCanExecute(false);
-		}
-		
 		return contextValidationResult;
 	}
 	
