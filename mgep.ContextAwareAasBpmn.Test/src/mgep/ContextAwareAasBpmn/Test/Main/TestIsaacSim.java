@@ -80,9 +80,9 @@ public class TestIsaacSim {
 		//String filePath = SynchronizeThisDeviceData.class.getClassLoader().getResource("config.properties").getPath();
 		//Tools.LoadEnvironmentFromPropertiesFile(filePath);
 		
-		int epoch = 68;
-		int maxEpochs = 100;
-		int qtyShells = 10;
+		int epoch = 40;
+		int maxEpochs = 50;
+		int qtyShells = 5;
 		
 		TestIsaacSim simulation = new TestIsaacSim();
 		
@@ -101,7 +101,7 @@ public class TestIsaacSim {
 		lQoSConditions.add("PAYLOAD_CAPACITY >= 0.6");
 		//lQoSConditions.add("AvgNetworkLatency <= 100");
 		
-		System.out.println(String.format("Quality conditions: %s", String.join(" && ", lQoSConditions)));
+		System.out.println(String.format("Shells: %s Quality conditions: %s", qtyShells, String.join(" && ", lQoSConditions)));
 
 		while(epoch <= maxEpochs) {
 			System.out.println(String.format("Epoch: %s. Initiating simulation...", epoch));
