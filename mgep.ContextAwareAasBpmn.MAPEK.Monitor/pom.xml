@@ -66,7 +66,7 @@
 		<artifactId>jrosbridge</artifactId>
 		<version>0.2.3</version>
 		<scope>system</scope>
-		<systemPath>C:/Git/ContextAnalyzer/jrosbridge.jar</systemPath>
+		<systemPath>C:\Git\ContextAnalyzer\jrosbridge\target\jrosbridge-0.2.3.jar</systemPath>
 	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/org.eclipse.milo/sdk-client -->

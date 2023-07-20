@@ -25,7 +25,7 @@ import mgep.ContextAwareAasBpmn.RdfRepositoryManager.*;
 import mgep.ContextAwareAasBpmn.Core.*;
 
 public class TestIsaacSim {
-	private static final String ROS_SERVER_IP = "34.116.215.235";
+	private static final String ROS_SERVER_IP = "34.95.194.5";
 	private static final String ROS_SERVER_HTTP_PORT = "5000";
 	private static final String ROS_SERVER_PROTOCOL = "http";
 	
@@ -80,9 +80,9 @@ public class TestIsaacSim {
 		//String filePath = SynchronizeThisDeviceData.class.getClassLoader().getResource("config.properties").getPath();
 		//Tools.LoadEnvironmentFromPropertiesFile(filePath);
 		
-		int epoch = 40;
+		int epoch = 29;
 		int maxEpochs = 50;
-		int qtyShells = 5;
+		int qtyShells = 9;
 		
 		TestIsaacSim simulation = new TestIsaacSim();
 		
