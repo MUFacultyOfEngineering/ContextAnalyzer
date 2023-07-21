@@ -15,28 +15,7 @@
 		<spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 	</properties>
 	<name>jrosbridge</name>
-	<url>https://github.com/rctoris/jrosbridge</url>
-	<licenses>
-		<license>
-			<name>BSD License</name>
-			<url>https://raw.github.com/rctoris/jrosbridge/develop/LICENSE</url>
-			<distribution>repo</distribution>
-			<comments>The BSD 3-Clause License</comments>
-		</license>
-	</licenses>
 	<description>A Native Java EE rosbridge Client</description>
-
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/rctoris/jrosbridge/issues</url>
-	</issueManagement>
-
-	<scm>
-		<connection>scm:git:git://github.com/rctoris/jrosbridge.git</connection>
-		<developerConnection>scm:git:git@github.com:rctoris/jrosbridge.git</developerConnection>
-		<url>https://github.com/rctoris/jrosbridge</url>
-		<tag>jrosbridge-0.2.0</tag>
-	</scm>
 
 	<dependencies>
 		<dependency>
@@ -115,70 +94,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<distributionManagement>
-		<snapshotRepository>
-			<id>sonatype-nexus-snapshots</id>
-			<name>Sonatype Nexus Snapshot Repository</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-		<repository>
-			<id>sonatype-nexus-staging</id>
-			<name>Sonatype Nexus Release Repository</name>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-	</distributionManagement>
-
-	<profiles>
-		<profile>
-			<id>release-sign-artifacts</id>
-			<activation>
-				<property>
-					<name>performRelease</name>
-					<value>true</value>
-				</property>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
-						<configuration>
-							<passphrase>${gpg.passphrase}</passphrase>
-						</configuration>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
-	<developers>
-		<developer>
-			<id>rctoris</id>
-			<name>Russell Toris</name>
-			<email>russell.toris@gmail.com</email>
-			<url>http://users.wpi.edu/~rctoris</url>
-			<organization>WPI</organization>
-			<organizationUrl>http://wpi.edu/</organizationUrl>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<timezone>-5</timezone>
-		</developer>
-	</developers>
-
-	<ciManagement>
-		<system>Travis CI</system>
-		<url>https://travis-ci.org/rctoris/jrosbridge</url>
-	</ciManagement>
 </project>

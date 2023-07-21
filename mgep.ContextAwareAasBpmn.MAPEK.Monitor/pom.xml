@@ -3,47 +3,15 @@
   <groupId>mgep.ContextAwareAasBpmn.MAPEK.Monitor</groupId>
   <artifactId>mgep.ContextAwareAasBpmn.MAPEK.Monitor</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   
   <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
-    
-  <build>
-    <plugins>
-      <!--
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>11</release>
-        </configuration>
-      </plugin>
-      -->
-      <!-- Add the Maven Shade Plugin -->
-      <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-shade-plugin</artifactId>
-          <version>3.2.4</version>
-          <executions>
-              <execution>
-                  <phase>package</phase>
-                  <goals>
-                      <goal>shade</goal>
-                  </goals>
-                  <configuration>
-                      <!-- Set the main class -->
-                      <transformers>
-                          <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                              <mainClass>mgep.ContextAwareAasBpmn.MAPEK.Monitor.ShellAgentUpdater</mainClass>
-                          </transformer>
-                      </transformers>
-                  </configuration>
-              </execution>
-          </executions>
-      </plugin>
-    </plugins>
-  </build>
+  
+
   <dependencies>
     <!-- Add the dependency for mgep.ContextAwareAasBpmn -->
     <dependency>
@@ -86,4 +54,36 @@
         <version>2.12.5</version>
     </dependency>
   </dependencies>
+    
+  <build>
+    <plugins>
+       <plugin>
+           <artifactId>maven-dependency-plugin</artifactId>
+           <executions>
+               <execution>
+                   <phase>install</phase>
+                   <goals>
+                       <goal>copy-dependencies</goal>
+                   </goals>
+                   <configuration>
+                       <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                   </configuration>
+               </execution>
+           </executions>
+       </plugin>
+       
+	  <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <configuration>
+              <archive>
+                  <manifest>
+                      <addClasspath>true</addClasspath>
+                      <classpathPrefix>lib/</classpathPrefix>
+                      <mainClass>mgep.ContextAwareAasBpmn.MAPEK.Monitor.ShellAgentUpdater</mainClass>
+                  </manifest>
+              </archive>
+          </configuration>
+      </plugin>
+    </plugins>
+  </build>
 </project>

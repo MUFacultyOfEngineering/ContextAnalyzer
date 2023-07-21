@@ -2,6 +2,7 @@ package mgep.ContextAwareAasBpmn.MAPEK.Monitor;
 
 
 import java.io.BufferedReader;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -27,8 +28,15 @@ public class ShellAgentUpdater {
 		//read AAS and map values
 		var agentUpdater = new ShellAgentUpdater();
 		var rdfDal = new RDFDAL();
-		String filePath = ShellAgentUpdater.class.getClassLoader().getResource("config.properties").getPath();
-		Tools.LoadEnvironmentFromPropertiesFile(filePath);
+		//String filePath = ShellAgentUpdater.class.getClassLoader().getResource("config.properties").getPath();
+		//Tools.LoadEnvironmentFromPropertiesFile(filePath);
+		InputStream fileStream = ShellAgentUpdater.class.getClassLoader().getResourceAsStream("config.properties");
+		Tools.LoadEnvironmentFromPropertiesFileStream(fileStream);
+		
+		System.out.println(String.format("GRAPHDB_SERVER: %s", Tools.GRAPHDB_SERVER));
+        System.out.println(String.format("AAS_SERVER: %s", Tools.AAS_SERVER));
+        System.out.println(String.format("INTERVAL_GATHER_QOS_VALS: %s", Tools.INTERVAL_GATHER_QOS_VALS));
+		
 		var repManager = new RDFRepositoryManager(Tools.GRAPHDB_SERVER);
 		
 		//delete all data

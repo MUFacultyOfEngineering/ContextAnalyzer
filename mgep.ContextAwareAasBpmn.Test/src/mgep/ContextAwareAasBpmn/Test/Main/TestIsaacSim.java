@@ -2,6 +2,7 @@ package mgep.ContextAwareAasBpmn.Test.Main;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
@@ -25,17 +26,6 @@ import mgep.ContextAwareAasBpmn.RdfRepositoryManager.*;
 import mgep.ContextAwareAasBpmn.Core.*;
 
 public class TestIsaacSim {
-	private static final String ROS_SERVER_IP = "34.95.194.5";
-	private static final String ROS_SERVER_HTTP_PORT = "5000";
-	private static final String ROS_SERVER_PROTOCOL = "http";
-	
-	private static final String NODEREDWM_SERVER_IP = "localhost";
-	private static final String NODEREDWM_HTTP_PORT = "1880";
-	private static final String NODEREDWM_PROTOCOL = "http";
-	
-	private static final String CA_SERVER_IP  = "localhost";
-	private static final String CA_PROTOCOL = "http";
-	private static final String CA_HTTP_PORT = "8080";
 	private static final int MS_SLEEP_GATHER_QOS_VALS = 20000;
 	
 	private static final double[][] INIT_ROBOTS_POS = {
@@ -77,12 +67,17 @@ public class TestIsaacSim {
 
 	public static void main(String[] args) throws InterruptedException {
 		//load config file
-		//String filePath = SynchronizeThisDeviceData.class.getClassLoader().getResource("config.properties").getPath();
-		//Tools.LoadEnvironmentFromPropertiesFile(filePath);
+		InputStream fileStream = TestIsaacSim.class.getClassLoader().getResourceAsStream("config.properties");
+		Tools.LoadEnvironmentFromPropertiesFileStream(fileStream);
 		
-		int epoch = 29;
-		int maxEpochs = 50;
-		int qtyShells = 9;
+		System.out.println(String.format("GRAPHDB_SERVER: %s", Tools.GRAPHDB_SERVER));
+        System.out.println(String.format("AAS_SERVER: %s", Tools.AAS_SERVER));
+        System.out.println(String.format("ROS_SERVER_IP: %s", Tools.ROS_SERVER_IP));
+        System.out.println(String.format("CA_SERVER_IP: %s", Tools.CA_SERVER_IP));
+		
+		int epoch = Integer.valueOf(args[0]);
+		int maxEpochs = Integer.valueOf(args[1]);
+		int qtyShells = Integer.valueOf(args[2]);
 		
 		TestIsaacSim simulation = new TestIsaacSim();
 		
@@ -235,7 +230,7 @@ public class TestIsaacSim {
 	private JsonNode MoveAllInitialPosition() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/MoveAllInitialPosition", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/MoveAllInitialPosition", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("POST");
@@ -268,7 +263,7 @@ public class TestIsaacSim {
 	private JsonNode MoveInitialPosition(int robotId) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/MoveInitialPosition/%s", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT, robotId));
+			URL url = new URL(String.format("%s://%s:%s/MoveInitialPosition/%s", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT, robotId));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("POST");
@@ -302,7 +297,7 @@ public class TestIsaacSim {
 	private JsonNode MoveToPosition(int robotId, double x, double y) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/move_async/%s", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT, robotId));
+			URL url = new URL(String.format("%s://%s:%s/move_async/%s", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT, robotId));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();
 			httpClient.setRequestProperty("Content-Type", "application/json");
 			httpClient.setDoOutput(true);			
@@ -356,7 +351,7 @@ public class TestIsaacSim {
 	private JsonNode MoveAllRandomPosition() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/MoveAllRandomPosition", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/MoveAllRandomPosition", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("POST");
@@ -389,7 +384,7 @@ public class TestIsaacSim {
 	private JsonNode MoveRandomPosition(int robotId) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/MoveRandomPosition/%s", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT, robotId));
+			URL url = new URL(String.format("%s://%s:%s/MoveRandomPosition/%s", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT, robotId));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("POST");
@@ -422,7 +417,7 @@ public class TestIsaacSim {
 	private JsonNode MoveToPositionRecoveryStrategy(int robotId, String moveGoal, double specificGoal[]) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/MoveToPositionRecoveryStrategy?robot_id=%s&destination=%s", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT, robotId, moveGoal));
+			URL url = new URL(String.format("%s://%s:%s/MoveToPositionRecoveryStrategy?robot_id=%s&destination=%s", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT, robotId, moveGoal));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();
 			httpClient.setRequestMethod("POST");
 			
@@ -469,7 +464,7 @@ public class TestIsaacSim {
 	private JsonNode GetStateAll() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/get_state_all_robots", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/get_state_all_robots", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("GET");
@@ -502,7 +497,7 @@ public class TestIsaacSim {
 	private JsonNode GetState(int robotId) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/get_state/%s", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT, robotId));
+			URL url = new URL(String.format("%s://%s:%s/get_state/%s", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT, robotId));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("GET");
@@ -535,7 +530,7 @@ public class TestIsaacSim {
 	private JsonNode GetAllRobotsCurrentPosition() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_position", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_position", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("GET");
@@ -568,7 +563,7 @@ public class TestIsaacSim {
 	private JsonNode GetAllRobotsCurrentBatteries() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_batteries", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_batteries", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("GET");
@@ -601,7 +596,7 @@ public class TestIsaacSim {
 	private JsonNode ResetBatteriesAllRobots() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/ResetBatteriesAllRobots", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/ResetBatteriesAllRobots", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();
 			
 			httpClient.setRequestMethod("POST");
@@ -635,7 +630,7 @@ public class TestIsaacSim {
 	private JsonNode SetBatteriesAllRobots(int batteries[]) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/set_all_robots_batteries", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/set_all_robots_batteries", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();
 			httpClient.setRequestProperty("Content-Type", "application/json");
 			httpClient.setDoOutput(true);
@@ -676,7 +671,7 @@ public class TestIsaacSim {
 	private JsonNode GetAllRobotsCurrentPayloadCapacity() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_payload_capacity", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_payload_capacity", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("GET");
@@ -710,7 +705,7 @@ public class TestIsaacSim {
 	private JsonNode SetAllRobotsPayloadCapacity(double payloadCapacities[]) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/set_all_robots_payload_capacities", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/set_all_robots_payload_capacities", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();
 			httpClient.setRequestProperty("Content-Type", "application/json");
 			httpClient.setDoOutput(true);			
@@ -751,7 +746,7 @@ public class TestIsaacSim {
 	private JsonNode GetAllRobotsCurrentPurs() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_purs", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_purs", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("GET");
@@ -785,7 +780,7 @@ public class TestIsaacSim {
 	private JsonNode SetAllRobotsPurs(double purs[]) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/set_all_robots_purs", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/set_all_robots_purs", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();
 			httpClient.setRequestProperty("Content-Type", "application/json");
 			httpClient.setDoOutput(true);			
@@ -826,7 +821,7 @@ public class TestIsaacSim {
 	private JsonNode GetAllRobotsCurrentPpul() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_ppul", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/get_all_robots_current_ppul", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("GET");
@@ -860,7 +855,7 @@ public class TestIsaacSim {
 	private JsonNode SetAllRobotsPpul(double ppul[]) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/set_all_robots_ppul", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/set_all_robots_ppul", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();
 			httpClient.setRequestProperty("Content-Type", "application/json");
 			httpClient.setDoOutput(true);			
@@ -901,7 +896,7 @@ public class TestIsaacSim {
 	private JsonNode RandomizeMaxPayloadCapacityAllRobots() {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/RandomizeMaxPayloadCapacityAllRobots", ROS_SERVER_PROTOCOL, ROS_SERVER_IP, ROS_SERVER_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/RandomizeMaxPayloadCapacityAllRobots", Tools.ROS_SERVER_PROTOCOL, Tools.ROS_SERVER_IP, Tools.ROS_SERVER_HTTP_PORT));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("POST");
@@ -1056,7 +1051,7 @@ public class TestIsaacSim {
 	private JsonNode NodeRedWMStartProcess(String processName, int delayTasExecution, boolean shouldValidateContext) {
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/start_process?processname=%s&delayTaskExecution=%s&validateContext=%s", NODEREDWM_PROTOCOL, NODEREDWM_SERVER_IP, NODEREDWM_HTTP_PORT, processName, delayTasExecution, shouldValidateContext));
+			URL url = new URL(String.format("%s://%s:%s/start_process?processname=%s&delayTaskExecution=%s&validateContext=%s", Tools.NODEREDWM_PROTOCOL, Tools.NODEREDWM_SERVER_IP, Tools.NODEREDWM_HTTP_PORT, processName, delayTasExecution, shouldValidateContext));
 			HttpURLConnection httpClient = (HttpURLConnection) url.openConnection();					
 			
 			httpClient.setRequestMethod("POST");
@@ -1105,7 +1100,7 @@ public class TestIsaacSim {
 		//invoke API to get this random service
 		StringBuilder responseRandomService = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/ContextAwareAasBpmn/api/ContextAnalyzer/GetServiceByName?aasIdentifier=%s&serviceName=%s", CA_PROTOCOL, CA_SERVER_IP, CA_HTTP_PORT, randomAssetIdentifier, serviceName));
+			URL url = new URL(String.format("%s://%s:%s/ContextAwareAasBpmn/api/ContextAnalyzer/GetServiceByName?aasIdentifier=%s&serviceName=%s", Tools.CA_PROTOCOL, Tools.CA_SERVER_IP, Tools.CA_HTTP_PORT, randomAssetIdentifier, serviceName));
 			HttpURLConnection client = (HttpURLConnection) url.openConnection();					
 			
 			client.setRequestMethod("GET");
@@ -1139,7 +1134,7 @@ public class TestIsaacSim {
 		//use context analyzer for best service selection
 		StringBuilder responseContextBestService = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/ContextAwareAasBpmn/api/ContextAnalyzer/ValidateContextSelectBestService", CA_PROTOCOL, CA_SERVER_IP, CA_HTTP_PORT));
+			URL url = new URL(String.format("%s://%s:%s/ContextAwareAasBpmn/api/ContextAnalyzer/ValidateContextSelectBestService", Tools.CA_PROTOCOL, Tools.CA_SERVER_IP, Tools.CA_HTTP_PORT));
 			HttpURLConnection client = (HttpURLConnection) url.openConnection();
 			client.setRequestProperty("Content-Type", "application/json");
 			client.setDoOutput(true);
@@ -1216,7 +1211,7 @@ public class TestIsaacSim {
 		//use context analyzer for best service selection
 		StringBuilder response = new StringBuilder();
 		try {
-			URL url = new URL(String.format("%s://%s:%s/ContextAwareAasBpmn/api/ContextAnalyzer/GetServiceByName?aasIdentifier=%s&serviceName=%s", CA_PROTOCOL, CA_SERVER_IP, CA_HTTP_PORT, aasIdentifier, serviceName));
+			URL url = new URL(String.format("%s://%s:%s/ContextAwareAasBpmn/api/ContextAnalyzer/GetServiceByName?aasIdentifier=%s&serviceName=%s", Tools.CA_PROTOCOL, Tools.CA_SERVER_IP, Tools.CA_HTTP_PORT, aasIdentifier, serviceName));
 			HttpURLConnection client = (HttpURLConnection) url.openConnection();
 			
 			client.setRequestMethod("GET");
