@@ -1,4 +1,4 @@
-Quality conditions: PROXIMITY_PICKUP <= 20.0 && BATTERY >= 25 && POSITIONAL_UNCERTAINTY <= 0.90 && PAYLOAD_CAPACITY >= 0.6
+Shells: 10 Quality conditions: PROXIMITY_PICKUP <= 20.0 && BATTERY >= 25 && POSITIONAL_UNCERTAINTY <= 0.90 && PAYLOAD_CAPACITY >= 0.6
 Epoch: 1. Initiating simulation...
 Robot 2 has reached the goal INITIAL_POS
 Robot 10 has reached the goal INITIAL_POS
