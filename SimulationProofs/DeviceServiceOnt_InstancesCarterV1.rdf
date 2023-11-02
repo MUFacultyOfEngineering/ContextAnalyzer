@@ -1,0 +1,2014 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+	xmlns:dsOnt="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#"
+	xmlns:wgs="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:gn="http://www.geonames.org/ontology#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:fn="http://www.w3.org/2005/xpath-functions#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:sesame="http://www.openrdf.org/schema/sesame#"
+	xmlns:rdf4j="http://rdf4j.org/schema/rdf4j#">
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Service"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Output_color">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Output"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_null">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_BATTERY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<rdf:type rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Quality"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4641</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4642</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4643</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4644</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4645</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4646</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4647</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4648</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4649</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:aasIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4650</dsOnt:aasIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:aasIdShort>AASCarter1</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:aasIdShort>AASCarter2</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:aasIdShort>AASCarter3</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:aasIdShort>AASCarter4</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:aasIdShort>AASCarter5</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:aasIdShort>AASCarter6</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:aasIdShort>AASCarter7</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:aasIdShort>AASCarter8</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:aasIdShort>AASCarter9</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:aasIdShort>AASCarter10</dsOnt:aasIdShort>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:aasName>AASCarter1</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:aasName>AASCarter2</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:aasName>AASCarter3</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:aasName>AASCarter4</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:aasName>AASCarter5</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:aasName>AASCarter6</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:aasName>AASCarter7</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:aasName>AASCarter8</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:aasName>AASCarter9</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:aasName>AASCarter10</dsOnt:aasName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:deviceApiDocumentation>http://34.116.215.235:80/swagger</dsOnt:deviceApiDocumentation>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:deviceDescription>Nvidia carter bot V1</dsOnt:deviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4641</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4642</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4643</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4644</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4645</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4646</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4647</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4648</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4649</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:deviceIdentifier>https://mondragon.com/ids/asset/4274_9012_3032_4650</dsOnt:deviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:deviceIPAddress>34.116.215.235</dsOnt:deviceIPAddress>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:deviceIsOnline>true</dsOnt:deviceIsOnline>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:deviceName>Device_AASCarter1</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:deviceName>Device_AASCarter2</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:deviceName>Device_AASCarter3</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:deviceName>Device_AASCarter4</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:deviceName>Device_AASCarter5</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:deviceName>Device_AASCarter6</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:deviceName>Device_AASCarter7</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:deviceName>Device_AASCarter8</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:deviceName>Device_AASCarter9</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:deviceName>Device_AASCarter10</dsOnt:deviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<dsOnt:serviceDescription>Nvidia carter bot V1</dsOnt:serviceDescription>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>0004c998-b50b-4100-814d-6fc781dc5771</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>a229d90e-e8b9-4efc-afcb-8ea2c53bbb4a</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>bc4692dd-39f1-4c79-b977-bf88fa8659c5</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>822ea07d-258b-481f-a9fd-af7b1496e289</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>235ab106-4a8f-4acb-8f67-5536d87a83b5</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>0303bb29-295d-453e-8c07-db22aed7752e</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>22762245-976a-40b9-8d00-c26565de7578</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>3e31efa9-7ea1-43fc-b715-aa4e82481e73</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>dd648bae-fa18-4ce1-a06b-b4dd577bc748</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<dsOnt:serviceIdentifier>f00992be-3d99-42b5-8fa5-c417de281b28</dsOnt:serviceIdentifier>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<dsOnt:serviceIsAsync>false</dsOnt:serviceIsAsync>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<dsOnt:serviceMethod>POST</dsOnt:serviceMethod>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<dsOnt:serviceName>PickAndDeliverPackage</dsOnt:serviceName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/1</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/2</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/3</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/4</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/5</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/6</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/7</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/8</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/9</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<dsOnt:serviceURL>http://34.116.215.235:5000/collect_resource/10</dsOnt:serviceURL>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterName>color</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterName>BATTERY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterName>POSITIONAL_UNCERTAINTY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterName>PROXIMITY_PICKUP</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterName>PAYLOAD_CAPACITY</dsOnt:parameterName>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterType>text</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterType>Integer</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterType>Decimal</dsOnt:parameterType>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.62</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>16.03</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>0.91</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Output_color">
+	<dsOnt:parameterValue>Yellow|Red|Blue|Green</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>1.02</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>17.15</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>0.56</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.23</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>18.04</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>1.03</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.72</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>19.44</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>0.85</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.31</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>21.52</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>1.99</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.73</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>23.52</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>1.35</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.9</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>22.05</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>0.69</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.58</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>12.05</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>1.99</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.47</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>20.14</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>0.73</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:parameterValue>0</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:parameterValue>0.64</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:parameterValue>19.91</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:parameterValue>1.5</dsOnt:parameterValue>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<dsOnt:hasOutput rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Output_color"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterCorrespondsTo>SENSOR</dsOnt:qualityParameterCorrespondsTo>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_BATTERY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY">
+	<dsOnt:qualityParameterEvaluationExpression>null</dsOnt:qualityParameterEvaluationExpression>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage">
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_null"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_BATTERY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_POSITIONAL_UNCERTAINTY"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PROXIMITY_PICKUP"/>
+	<dsOnt:hasQuality rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage_Quality_PAYLOAD_CAPACITY"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter1_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter2_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter3_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter4_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter5_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter6_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter7_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter8_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter9_PickAndDeliverPackage"/>
+</rdf:Description>
+
+<rdf:Description rdf:about="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10">
+	<dsOnt:hasService rdf:resource="https://www.mondragon.edu/ontologies/2022/9/DeviceServiceOnt#Device_AASCarter10_PickAndDeliverPackage"/>
+</rdf:Description>
+
+</rdf:RDF>
